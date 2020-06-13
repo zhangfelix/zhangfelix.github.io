@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
-    <link>https://zhangfelix.github.io/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <title>Posts on 独白</title>
+    <link>https://www.zhangfelix.com/posts/</link>
+    <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 12 Jun 2020 14:13:26 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2020 19:45:22 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangfelix.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My First Post</title>
-      <link>https://zhangfelix.github.io/posts/my-first-post/</link>
-      <pubDate>Fri, 12 Jun 2020 14:13:26 +0800</pubDate>
+      <title>使用Hugo和GitHub搭建博客</title>
+      <link>https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 13 Jun 2020 19:45:22 +0800</pubDate>
       
-      <guid>https://zhangfelix.github.io/posts/my-first-post/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+      <guid>https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;p&gt;（施工中……）折腾了几天博客的框架终于搭建起来了。研究了一番之后，最终还是选择使用Hugo和GitHub来搭建博客。本文介绍了如何使用Hugo来搭建静态博客网站，并将其部署在GitHub上。（可选）并使用自己的域名访问博客。&lt;/p&gt;</description>
     </item>
     
   </channel>

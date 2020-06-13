@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
-    <link>https://zhangfelix.github.io/tags/</link>
-    <description>Recent content in Tags on My New Hugo Site</description>
+    <title>Tags on 独白</title>
+    <link>https://www.zhangfelix.com/tags/</link>
+    <description>Recent content in Tags on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 12 Jun 2020 14:13:26 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2020 19:45:22 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangfelix.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.zhangfelix.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>tag1</title>
-      <link>https://zhangfelix.github.io/tags/tag1/</link>
-      <pubDate>Fri, 12 Jun 2020 14:13:26 +0800</pubDate>
+      <title>GitHub</title>
+      <link>https://www.zhangfelix.com/tags/github/</link>
+      <pubDate>Sat, 13 Jun 2020 19:45:22 +0800</pubDate>
       
-      <guid>https://zhangfelix.github.io/tags/tag1/</guid>
+      <guid>https://www.zhangfelix.com/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tag2</title>
-      <link>https://zhangfelix.github.io/tags/tag2/</link>
-      <pubDate>Fri, 12 Jun 2020 14:13:26 +0800</pubDate>
+      <title>Hugo</title>
+      <link>https://www.zhangfelix.com/tags/hugo/</link>
+      <pubDate>Sat, 13 Jun 2020 19:45:22 +0800</pubDate>
       
-      <guid>https://zhangfelix.github.io/tags/tag2/</guid>
+      <guid>https://www.zhangfelix.com/tags/hugo/</guid>
       <description></description>
     </item>
     
