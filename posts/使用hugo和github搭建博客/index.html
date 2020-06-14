@@ -30,7 +30,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" />
 <meta property="article:published_time" content="2020-06-13T19:45:22+08:00" />
-<meta property="article:modified_time" content="2020-06-13T19:45:22+08:00" />
+<meta property="article:modified_time" content="2020-06-14T15:58:22+08:00" />
 
 
 
@@ -89,11 +89,101 @@
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
           使用Hugo和GitHub搭建博客
-          <div class="sub header">@ Zhang nan · Saturday, Jun 13, 2020 · 1 分钟阅读 · 更新于 Jun 13, 2020</div>
+          <div class="sub header">@ Zhang nan · Saturday, Jun 13, 2020 · 5 分钟阅读 · 更新于 Jun 14, 2020</div>
         </h2>
       </header>
       <article style="margin-top: 2rem;"><p>（施工中……）折腾了几天博客的框架终于搭建起来了。研究了一番之后，最终还是选择使用Hugo和GitHub来搭建博客。本文介绍了如何使用Hugo来搭建静态博客网站，并将其部署在GitHub上。（可选）并使用自己的域名访问博客。</p>
-<p>施工中……</p></article>
+<h2 id="hugo的安装和使用1">Hugo的安装和使用<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
+<h3 id="hugo的安装">Hugo的安装</h3>
+<p>初步使用Hugo的话，只需要跟随官网的文档过一遍<a href="https://gohugo.io/getting-started/quick-start/">Quick Start</a>就可以了解基本的安装、使用方法了。这里根据我自己的经历也进行简单的说明。</p>
+<p>在Mac系统，通过包管理工具<a href="https://brew.sh/">Homebrew</a>可以非常简单的安装Hugo。</p>
+<pre><code>brew install hugo
+</code></pre><p>等待安装完成之后，可以使用<code>hugo version</code>命令来验证。</p>
+<h3 id="建立新站点">建立新站点</h3>
+<p>接下来从终端进入到你想要放置博客站点内容的目录下面使用</p>
+<pre><code>hugo new site myblog
+</code></pre><p>来建立站点。该命令会在当前目录下新建一个名为&quot;myblog&quot;的文件夹。你所有的站点文件都会在这个文件夹下面存放。</p>
+<h3 id="添加主题">添加主题</h3>
+<p>与其他的站点工具不同，Hugo没有默认的主题，需要先添加一个主题才能新建文章。Hugo的官网上有很多的<a href="https://themes.gohugo.io/">主题</a>可选。选定一个喜欢的主题之后，需要将其下载到myblog文件夹中。在主题说明的页面中点击&quot;download&quot;的按钮，会进入到对应的GitHub页面中。有很多种方式可以将主题文件下载，并放置到&quot;myblog/themes/theme_name&quot;文件夹中（theme_name是主题的名称，可以在该主题的GitHub仓库的页面看到）。在这里为了使用git对站点进行管理，实现在不同的设备上方便的对站点进行维护，我们使用git的submodule功能。</p>
+<pre><code>cd myblog
+git init
+git submodule add https://github.com/budparr/gohugo-theme-theme_name.git themes/theme_name
+</code></pre><p>接下来，我们需要在配置文件中指名站点所使用的主题。打开config.toml直接编辑或者使用<code>echo 'theme = &quot;theme_name&quot;' &gt;&gt; config.toml</code>命令。配置文件中还有其他的可配置内容，这些我们暂时不去管他。</p>
+<h3 id="新建文章">新建文章</h3>
+<p>新建文章可以使用如下的命令，或者直接在<code>content/&lt;CATEGORY&gt;/&lt;FILE&gt;.&lt;FORMAT&gt;</code>里面手动创建。</p>
+<pre><code>hugo new posts/my-first-post.md
+</code></pre><p>在这里建议使用Hugo的<code>new</code>命令创建，因为根据主题不同，使用<code>new</code>命令创建的文件会包含简单的模版框架。例如：</p>
+<pre><code>---
+title: 使用Hugo和GitHub搭建博客
+date: 2020-06-13T19:45:22+08:00
+lastmod: 2020-06-13T19:45:22+08:00
+author: Zhang nan
+categories: [&quot;技术&quot;]
+tags: [&quot;Hugo&quot;, &quot;GitHub&quot;]
+draft: true
+---
+</code></pre><p>具体的配置方式和参数的意义，还请查看对应的主题说明。</p>
+<h3 id="开启hugo本地服务">开启Hugo本地服务</h3>
+<p>我们需要将Hugo本地服务跑起来，才能看到上面操作的成果，看到新的站点的样子。</p>
+<pre><code>▶ hugo server -D
+
+                   | EN
++------------------+----+
+  Pages            | 10
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     |  3
+  Processed images |  0
+  Aliases          |  1
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 11 ms
+Watching for changes in /Users/workspace/myblog/{content,data,layouts,static,themes}
+Watching for config changes in /Users/workspace/myblog/config.toml
+Environment: &quot;development&quot;
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+</code></pre><p>打开<a href="http://localhost:1313/">http://localhost:1313/</a>，我们就可以看到刚才新建的站点了。此时标记为草稿的文章也会展示，但是在实际部署站点的时候需要将文章中的<code>draft: true</code>配置改为<code>false</code>。在本地服务开启的时候，对站点的改变（修改配置，修改、新增文章等）会直接展示出来。</p>
+<h3 id="配置文件的修改">配置文件的修改</h3>
+<p>打开配置<code>config.toml</code>可以看到很多的参数可以配置，这里只描述最基本的内容，不同的主题可能会支持不同的参数配置，具体请看对应主题的说明文档。</p>
+<p><code>baseURL</code>是站点的域名。<code>title</code>是站点的名称。<code>theme</code>是站点的主题。</p>
+<h3 id="谷歌分析的配置">谷歌分析的配置</h3>
+<p>很多主题都支持谷歌分析，启用谷歌分许需要配置追踪ID。追踪ID在谷歌分析的<a href="https://analytics.google.com/analytics/web/">官网</a>注册即可获得。</p>
+<h3 id="disqus评论系统的配置">Disqus评论系统的配置</h3>
+<p>很多主题都支持评论系统，针对不同的评论系统/主题有不同的配置方式。这里简单说明下Disqus的配置。一般而言你只需要在支持Disqus的主题中配置Disqus的shortname即可。</p>
+<p>shortname在<a href="https://disqus.com/profile/login/">Disqus</a>的官网进行注册便可以获得。在注册过程就可以看到你的站点的shortname，如果遗忘的话，<a href="https://disqus.com/admin/settings/general/">admin-setting</a>页面也可以找到。</p>
+<h2 id="在github部署个人博客">在GitHub部署个人博客</h2>
+<p>因为是个人博客，所以我们使用GitHub Pages的User Pages功能，具体的功能描述，可以查看<a href="https://help.github.com/en/github/working-with-github-pages">官方文档</a>。</p>
+<h3 id="创建github项目">创建GitHub项目</h3>
+<p>首先我们需要在GitHub上新建两个仓库分别用来保存站点源文件和发布站点。其中用来存放站点源文件的仓库可以根据自己喜好命名，而用来发布站点的仓库的名称需要使用<code>username.github.io</code></p>
+<h3 id="本地项目与github仓库同步">本地项目与GitHub仓库同步</h3>
+<p>在<code>myblog</code>文件夹中新建<code>.gitignore</code>文件，并在其中添加下面的内容：</p>
+<pre><code>### Hugo ###
+# Generated files by hugo
+# /public/
+/resources/_gen/
+# /themes/
+
+# Executable may be added to repository
+hugo.exe
+hugo.darwin
+hugo.linux
+
+# OSX
+.DS_Store
+</code></pre><p>其中<code>public</code>文件夹里面的内容是Hugo生成的静态网页文件，需要上传至<code>username.github.io</code>，因为下面会使用<code>git submodule</code>所以这里不需要忽略。<code>themes</code>文件夹也是一样。</p>
+<p>(施工中……)</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>本文是根据Mac系统的使用进行撰写的，使用其他系统的如果有不同之处还请参考官方文档。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
