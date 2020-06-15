@@ -172,7 +172,7 @@ Press Ctrl+C to stop
 <h2 id="在github部署个人博客">在GitHub部署个人博客</h2>
 <p>因为是个人博客，所以我们使用GitHub Pages的User Pages功能，具体的功能描述，可以查看<a href="https://help.github.com/en/github/working-with-github-pages">官方文档</a>。</p>
 <h3 id="创建github项目">创建GitHub项目</h3>
-<p>首先我们需要在GitHub上新建两个仓库分别用来保存站点源文件和发布站点。其中用来存放站点源文件的仓库可以根据自己喜好命名（例如<code>&lt;YOUR-PROJECT&gt; </code>），而用来发布站点的仓库的名称需要使用<code>&lt;USERNAME&gt;.github.io</code>。</p>
+<p>首先我们需要在GitHub上新建两个仓库分别用来保存站点源文件和发布站点。其中用来存放站点源文件的仓库可以根据自己喜好命名（例如<code>&lt;YOUR-PROJECT&gt;</code>），而用来发布站点的仓库的名称需要使用<code>&lt;USERNAME&gt;.github.io</code>。</p>
 <h3 id="本地项目与github仓库同步">本地项目与GitHub仓库同步</h3>
 <p>在<code>myblog</code>文件夹中新建<code>.gitignore</code>文件，并在其中添加下面的内容：</p>
 <pre><code>### Hugo ###
@@ -247,7 +247,7 @@ git push
 <pre><code>brew install hugo
 </code></pre>
 <p>同之前新建站点一样，首先在终端中进入想要放置博客站点内容的目录下，使用<code>git clone</code>命令拉取<code>GitHub</code>上的仓库。然后将<code>submodule</code>初始化，并更新。</p>
-<pre><code>git clone &lt;YOUR-PROJECT-URL&gt; &amp;&amp; cd &lt;YOUR-PROJECT&gt;
+<pre><code>git clone &lt;YOUR-PROJECT-URL&gt; myblog &amp;&amp; cd &lt;YOUR-PROJECT&gt;
 git submodule init
 git submodule update
 </code></pre>
@@ -277,7 +277,7 @@ git checkout master
 <pre><code>git submodule init
 git submodule update
 </code></pre>
-<p>在当前仓库里面初始化和更新子模块。也可以使用<code>git submodule update --init</code>。</p>
+<p>在当前仓库里面初始化和更新子模块。也可以使用<code>git submodule update --init</code>。或者使用<code>git clone &lt;YOUR-PROJECT-URL&gt; myblog --recursive</code>在新的环境克隆仓库及所有子模块。</p>
 <pre><code>cd public
 git checkout master
 cd ../themes/&lt;YOURTHEME&gt;
