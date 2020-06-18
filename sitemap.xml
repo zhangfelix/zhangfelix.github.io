@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.zhangfelix.com/categories/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangfelix.com/posts/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangfelix.com/tags/python/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_average_by/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangfelix.com/tags/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangfelix.com/</loc>
+    <lastmod>2020-06-18T19:57:04+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.zhangfelix.com/about/</loc>
     <lastmod>2020-06-13T19:46:36+08:00</lastmod>
   </url>
@@ -10,16 +45,6 @@
   <url>
     <loc>https://www.zhangfelix.com/about/desc/</loc>
     <lastmod>2020-06-13T19:46:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.zhangfelix.com/</loc>
-    <lastmod>2020-06-14T15:58:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.zhangfelix.com/categories/</loc>
-    <lastmod>2020-06-14T15:58:22+08:00</lastmod>
   </url>
   
   <url>
@@ -33,22 +58,7 @@
   </url>
   
   <url>
-    <loc>https://www.zhangfelix.com/posts/</loc>
-    <lastmod>2020-06-14T15:58:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.zhangfelix.com/tags/</loc>
-    <lastmod>2020-06-14T15:58:22+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2020-06-14T15:58:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2020-06-14T15:58:22+08:00</lastmod>
   </url>
   
