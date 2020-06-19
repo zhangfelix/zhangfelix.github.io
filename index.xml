@@ -6,10 +6,19 @@
     <description>Recent content on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jun 2020 19:57:04 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 19:19:35 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读_digitize</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_digitize/</link>
+      <pubDate>Fri, 19 Jun 2020 19:19:35 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_digitize/</guid>
+      <description>&lt;p&gt;本文中的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读_average_by</title>
