@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-
-
-  GitHub
-
-
-
-
+Python代码阅读：根据过滤器拆分列表
  | 独白</title>
 
     
@@ -20,27 +14,29 @@
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Zhang nan" />
+  <meta name="description" content="本文中的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/tags/github/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8/" />
 
 
-<meta property="og:title" content="GitHub" />
-<meta property="og:description" content="我的声音" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.zhangfelix.com/tags/github/" />
-<meta property="og:updated_time" content="2020-06-14T15:58:22+08:00" />
+<meta property="og:title" content="Python代码阅读：根据过滤器拆分列表" />
+<meta property="og:description" content="本文中的代码片段来自于30-seconds-of-python。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8/" />
+<meta property="article:published_time" content="2020-06-23T21:45:19+08:00" />
+<meta property="article:modified_time" content="2020-06-23T21:45:19+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="GitHub"/>
-<meta name="twitter:description" content="我的声音"/>
+<meta name="twitter:title" content="Python代码阅读：根据过滤器拆分列表"/>
+<meta name="twitter:description" content="本文中的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -87,7 +83,86 @@
 
           
 <div class="ui centered relaxed grid dream-grid">
-  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
+
+    <section class="ui top attached segment" id="dream-save-post-as-img">
+      <header style="margin-top: 0 !important;">
+        <h2 class="ui header">
+          Python代码阅读：根据过滤器拆分列表
+          <div class="sub header">@ Zhang nan · Tuesday, Jun 23, 2020 · 1 分钟阅读 · 更新于 Jun 23, 2020</div>
+        </h2>
+      </header>
+      <article style="margin-top: 2rem;"><p>本文中的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="bifurcate"><code>bifurcate</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bifurcate</span>(lst, filter):
+  <span style="color:#66d9ef">return</span> [
+    [x <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(lst) <span style="color:#66d9ef">if</span> filter[i] <span style="color:#f92672">==</span> True],
+    [x <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(lst) <span style="color:#66d9ef">if</span> filter[i] <span style="color:#f92672">==</span> False]
+  ]
+
+<span style="color:#75715e"># EXAMPLES</span>
+bifurcate([<span style="color:#e6db74">&#39;beep&#39;</span>, <span style="color:#e6db74">&#39;boop&#39;</span>, <span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#e6db74">&#39;bar&#39;</span>], [True, True, False, True]) <span style="color:#75715e"># [ [&#39;beep&#39;, &#39;boop&#39;, &#39;bar&#39;], [&#39;foo&#39;] ]</span>
+</code></pre></div><p><code>bifurcate</code>函数通过一个过滤器<code>filter</code>定义的内容，将输入列表<code>lst</code>分成两组。将<code>filter</code>中为<code>True</code>的对应的<code>lst</code>的项放入结果的第一个列表中，将<code>filter</code>中为<code>False</code>的对应的<code>lst</code>的项放入结果的第二个列表中。</p>
+<h2 id="enumerate"><code>enumerate</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">enumerate(iterable, start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</code></pre></div><p><code>enumerate</code>函数接收一个可迭代对象，并返回一个迭代对象。该迭代对象每次迭代返回一个元组，该元组包括一个序号和接收的可迭代对象的迭代值。<code>start</code>参数用于设定序号的初始值，默认为<code>0</code>。示例使用为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> seasons <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Spring&#39;</span>, <span style="color:#e6db74">&#39;Summer&#39;</span>, <span style="color:#e6db74">&#39;Fall&#39;</span>, <span style="color:#e6db74">&#39;Winter&#39;</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> list(enumerate(seasons))
+[(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;Spring&#39;</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;Summer&#39;</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;Fall&#39;</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;Winter&#39;</span>)]
+<span style="color:#f92672">&gt;&gt;&gt;</span> list(enumerate(seasons, start<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+[(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;Spring&#39;</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;Summer&#39;</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;Fall&#39;</span>), (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;Winter&#39;</span>)]
+</code></pre></div><p><code>enumerate</code>函数的实现逻辑相当于如下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">enumerate</span>(sequence, start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+    n <span style="color:#f92672">=</span> start
+    <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> sequence:
+        <span style="color:#66d9ef">yield</span> n, elem
+        n <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><h2 id="列表推导式">列表推导式</h2>
+<p>该函数使用列表推导式判断<code>lst</code>里面值对应位置的<code>filter</code>的值，并生成对应的分组列表。</p>
+<p>列表推导式的简单介绍可以查看<a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E8%BF%87%E6%BB%A4%E6%8E%89%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%80%BC/">Python代码阅读：过滤掉列表中的唯一值</a>中的“列表推导式”章节。</p></article>
+    </section>
+
+    <footer class="ui attached segment dream-tags">
+      
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
+      
+      <div
+        class="ui label"
+        style="float: right; cursor: pointer;"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>保存为图片
+      </div>
+    </footer>
+
+    
+
+    
+      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8\/'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    
+
+  </div>
+  <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
     <div class="ui small circular image">
@@ -235,51 +310,7 @@
 </article>
 
   </div>
-
-  
-  
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/%e4%bd%bf%e7%94%a8Hugo%e5%92%8cGitHub%e6%90%ad%e5%bb%ba%e5%8d%9a%e5%ae%a2-cover.jpg" alt="使用Hugo和GitHub搭建博客" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Hugo和GitHub搭建博客</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Saturday, Jun 13, 2020</p>
-      <p class="author">@ Zhang nan</p>
-    </div>
-    <div class="description">
-      折腾了几天博客的框架终于搭建起来了。研究了一番之后，最终还是选择使用Hugo和GitHub来搭建博客。本文介绍了如何使用Hugo来搭建静态博客网站，并将其部署在GitHub上。使用https://&lt;USERNAME&gt;.github.io或者自定义的域名访问博客。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      8 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
 </div>
-
-<div class="ui secondary menu dream-menu dream-paginator">
-  
-
-  
-</div>
-
 
         </section>
         <section class="back">
@@ -365,30 +396,6 @@
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/tags\/github\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
@@ -404,7 +411,9 @@
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-     
+    
+<script src="/js/html2canvas.min.js"></script>
+
 
     
       
