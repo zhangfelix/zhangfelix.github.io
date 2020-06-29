@@ -6,10 +6,20 @@
     <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 28 Jun 2020 13:44:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 14:54:08 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第8篇）：列表元素逻辑判断</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC8%E7%AF%87_%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/</link>
+      <pubDate>Mon, 29 Jun 2020 14:54:08 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC8%E7%AF%87_%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/</guid>
+      <description>&lt;p&gt;本篇阅读的三份代码的功能分别是判断列表中的元素是否都符合给定的条件；判断列表中是否存在符合给定的条件的元素；以及判断列表中的元素是否都不符合给定的条件。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第7篇）：列表分组计数</title>
