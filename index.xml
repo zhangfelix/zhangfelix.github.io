@@ -6,10 +6,20 @@
     <description>Recent content on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 29 Jun 2020 14:54:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 12:03:09 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第9篇）：返回最长的输入对象</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Tue, 30 Jun 2020 12:03:09 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;p&gt;本篇阅读的代码的功能是返回最长输入对象。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第8篇）：列表元素逻辑判断</title>

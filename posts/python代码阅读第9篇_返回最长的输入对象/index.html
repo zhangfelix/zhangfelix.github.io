@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-所有标签
+Python代码阅读（第9篇）：返回最长的输入对象
  | 独白</title>
 
     
@@ -14,27 +14,32 @@
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Zhang nan" />
+  <meta name="description" content="本篇阅读的代码的功能是返回最长输入对象。
+本篇阅读的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/tags/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/" />
 
 
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="我的声音" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.zhangfelix.com/tags/" />
-<meta property="og:updated_time" content="2020-06-30T12:03:09+08:00" />
+<meta property="og:title" content="Python代码阅读（第9篇）：返回最长的输入对象" />
+<meta property="og:description" content="本篇阅读的代码的功能是返回最长输入对象。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/" />
+<meta property="article:published_time" content="2020-06-30T12:03:09+08:00" />
+<meta property="article:modified_time" content="2020-06-30T12:03:09+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content="我的声音"/>
+<meta name="twitter:title" content="Python代码阅读（第9篇）：返回最长的输入对象"/>
+<meta name="twitter:description" content="本篇阅读的代码的功能是返回最长输入对象。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -81,6 +86,72 @@
 
           
 <div class="ui centered relaxed grid dream-grid">
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
+
+    <section class="ui top attached segment" id="dream-save-post-as-img">
+      <header style="margin-top: 0 !important;">
+        <h2 class="ui header">
+          Python代码阅读（第9篇）：返回最长的输入对象
+          <div class="sub header">@ Zhang nan · Tuesday, Jun 30, 2020 · 1 分钟阅读 · 更新于 Jun 30, 2020</div>
+        </h2>
+      </header>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码的功能是返回最长输入对象。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="longest_item"><code>longest_item</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">longest_item</span>(<span style="color:#f92672">*</span>args):
+  <span style="color:#66d9ef">return</span> max(args, key<span style="color:#f92672">=</span>len)
+
+<span style="color:#75715e"># EXAMPLES</span>
+longest_item(<span style="color:#e6db74">&#39;this&#39;</span>, <span style="color:#e6db74">&#39;is&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;testcase&#39;</span>) <span style="color:#75715e"># &#39;testcase&#39;</span>
+longest_item([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]) <span style="color:#75715e"># [1, 2, 3, 4, 5]</span>
+longest_item([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#e6db74">&#39;foobar&#39;</span>) <span style="color:#75715e"># &#39;foobar&#39;</span>
+</code></pre></div><p><code>longest_item</code>函数可以接收不限个数个可迭代对象或者含有<code>len</code>属性的对象，并返回其中最长的那个。如果有多个最长的对象，返回第一个。</p>
+<h2 id="max"><code>max</code></h2>
+<p><code>max</code>是个Python内置函数。它包括两种形式<code>max(iterable, *[, key, default])</code>和<code>max(arg1, arg2, *args[, key])</code>。第一种形式的<code>max</code>返回可迭代对象中最大的元素，第二种形式返回两个及以上实参中较大的那个。如果有多个最大元素，则此函数将返回第一个找到的。<code>key</code>关键词参数指定排序的依据，也就是按照什么属性进行排序。</p>
+<h2 id="args可变参数"><code>*args</code>可变参数</h2>
+<p>在<code>longest_item</code>和<code>max</code>中都出现了<code>*args</code>参数。这个不是一些其他编程语言中的指针。它是一种特殊的参数传递方式。使用这种形式的参数可以将任意数量的参数传递给函数。这些参数会被包含在一个元组里面。在函数中，就可以使用<code>args</code>来获取这个元组。那么在<code>longest_item</code>函数中，调用的<code>max</code>是哪种形式的呢？</p></article>
+    </section>
+
+    <footer class="ui attached segment dream-tags">
+      
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
+      
+      <div
+        class="ui label"
+        style="float: right; cursor: pointer;"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>保存为图片
+      </div>
+    </footer>
+
+    
+
+    
+      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1\/'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    
+
+  </div>
   <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
@@ -247,93 +318,6 @@
 </article>
 
   </div>
-  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-    <div class="ui segment dream-tags-section">
-      <h2 class="ui header">
-        所有标签
-        <div class="ui grey sub header">
-          
-            3 标签
-          
-        </div>
-      </h2>
-
-      
-      
-        
-        <h3 class="ui header">
-          <a href="/tags/github/">github</a>
-          1篇文章
-        </h3>
-        <ul>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Hugo和GitHub搭建博客</a>
-            </li>
-          
-        </ul>
-      
-        
-        <h3 class="ui header">
-          <a href="/tags/hugo/">hugo</a>
-          1篇文章
-        </h3>
-        <ul>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Hugo和GitHub搭建博客</a>
-            </li>
-          
-        </ul>
-      
-        
-        <h3 class="ui header">
-          <a href="/tags/python/">python</a>
-          9篇文章
-        </h3>
-        <ul>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/">Python代码阅读（第9篇）：返回最长的输入对象</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC8%E7%AF%87_%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/">Python代码阅读（第8篇）：列表元素逻辑判断</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0/">Python代码阅读（第7篇）：列表分组计数</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E7%9A%84%E5%87%BD%E6%95%B0%E5%AF%B9%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/">Python代码阅读：根据给定的函数对列表中的元素进行分组</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8/">Python代码阅读：根据过滤器拆分列表</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E8%BF%87%E6%BB%A4%E6%8E%89%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%80%BC/">Python代码阅读：过滤掉列表中的唯一值</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/">Python代码阅读：列表的最小公倍数</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_digitize/">Python代码阅读：digitize</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_average_by/">Python代码阅读：average_by</a>
-            </li>
-          
-        </ul>
-      
-
-    </div>
-  </div>
 </div>
 
         </section>
@@ -420,30 +404,6 @@
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/tags\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
@@ -459,7 +419,9 @@
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-     
+    
+<script src="/js/html2canvas.min.js"></script>
+
 
     
       
