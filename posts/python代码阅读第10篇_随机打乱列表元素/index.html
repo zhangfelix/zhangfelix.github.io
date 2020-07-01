@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-所有标签
+Python代码阅读（第10篇）：随机打乱列表元素
  | 独白</title>
 
     
@@ -14,27 +14,32 @@
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Zhang nan" />
+  <meta name="description" content="本篇阅读的代码实现了随机打乱列表元素的功能，将原有列表乱序排列，并返回一个新的列表（不改变原有列表的顺序）。
+本篇阅读的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/tags/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC10%E7%AF%87_%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/" />
 
 
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="我的声音" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.zhangfelix.com/tags/" />
-<meta property="og:updated_time" content="2020-07-01T20:15:00+08:00" />
+<meta property="og:title" content="Python代码阅读（第10篇）：随机打乱列表元素" />
+<meta property="og:description" content="本篇阅读的代码实现了随机打乱列表元素的功能，将原有列表乱序排列，并返回一个新的列表（不改变原有列表的顺序）。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC10%E7%AF%87_%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/" />
+<meta property="article:published_time" content="2020-07-01T20:15:00+08:00" />
+<meta property="article:modified_time" content="2020-07-01T20:15:00+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content="我的声音"/>
+<meta name="twitter:title" content="Python代码阅读（第10篇）：随机打乱列表元素"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了随机打乱列表元素的功能，将原有列表乱序排列，并返回一个新的列表（不改变原有列表的顺序）。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -81,6 +86,97 @@
 
           
 <div class="ui centered relaxed grid dream-grid">
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
+
+    <section class="ui top attached segment" id="dream-save-post-as-img">
+      <header style="margin-top: 0 !important;">
+        <h2 class="ui header">
+          Python代码阅读（第10篇）：随机打乱列表元素
+          <div class="sub header">@ Zhang nan · Wednesday, Jul 1, 2020 · 2 分钟阅读 · 更新于 Jul 1, 2020</div>
+        </h2>
+      </header>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了随机打乱列表元素的功能，将原有列表乱序排列，并返回一个新的列表（不改变原有列表的顺序）。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="shuffle"><code>shuffle</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> copy <span style="color:#f92672">import</span> deepcopy
+<span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> randint
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shuffle</span>(lst):
+  temp_lst <span style="color:#f92672">=</span> deepcopy(lst)
+  m <span style="color:#f92672">=</span> len(temp_lst)
+  <span style="color:#66d9ef">while</span> (m):
+    m <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+    i <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>, m)
+    temp_lst[m], temp_lst[i] <span style="color:#f92672">=</span> temp_lst[i], temp_lst[m]
+  <span style="color:#66d9ef">return</span> temp_lst
+
+<span style="color:#75715e"># EXAMPLES</span>
+foo <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+shuffle(foo) <span style="color:#75715e"># [2,3,1], foo = [1,2,3]</span>
+</code></pre></div><p>Python实际上提供了和<code>shuffle</code>功能类似的标准库函数<code>random.shuffle</code>，不过这个函数会在原列表上进行打乱，改变原列表的元素顺序。现在我们还是看下上面这段代码，如何实现乱序排列，如何实现返回新列表而不改变原列表内容。</p>
+<h2 id="copydeepcopyx-memo"><code>copy.deepcopy(x[, memo])</code></h2>
+<p><code>shuffle</code>函数使用了深拷贝将原始列表拷贝了一份传递给了临时列表，后续的所有操作都是基于临时列表进行的，所以不会影响到原有的列表。</p>
+<p>那么为什么不直接使用赋值语句呢？<code>temp_lst = lst</code>或者<code>temp_lst = lst[:]</code>？因为Python的赋值语句实际上是将一个<code>name</code>绑定到了对象上。上面的两种赋值语句实际上使得多个<code>name</code>绑定到了一个对象上。那么对于可变类型的对象而言，自身的改变会反映到不同的<code>name</code>上。所以使用上面两种赋值语句都不能做到不影响原始列表。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">from</span> copy <span style="color:#f92672">import</span> deepcopy
+<span style="color:#f92672">&gt;&gt;&gt;</span> o <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>],<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> c1 <span style="color:#f92672">=</span> o
+<span style="color:#f92672">&gt;&gt;&gt;</span> c2 <span style="color:#f92672">=</span> o[:]
+<span style="color:#f92672">&gt;&gt;&gt;</span> c3 <span style="color:#f92672">=</span> deepcopy(o)
+<span style="color:#f92672">&gt;&gt;&gt;</span> c1[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> c2[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> c3[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> c3[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> o
+[[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>]
+</code></pre></div><h2 id="fisher-yates-algorithm"><code>Fisher-Yates algorithm</code></h2>
+<p><code>Fisher-Yates algorithm</code>算法实现了洗牌算法。对于长度为n的列表，它的现代实现可以描述为以下伪代码：</p>
+<pre><code>-- To shuffle an array a of n elements (indices 0..n-1):
+for i from n−1 downto 1 do
+     j ← random integer such that 0 ≤ j ≤ i
+     exchange a[j] and a[i]
+</code></pre><p>这个算法在数学上的基本思想是不放回的随机从原始列表中取出元素，并将取出的元素按顺序放入新的列表中。使用这种方式就实现了新列表元素顺序的随机。这个算法的伪代码实现，优化了整体的效率，将元素的取出和放入新的数组，替换成了在原数组上将元素进行交换。</p></article>
+    </section>
+
+    <footer class="ui attached segment dream-tags">
+      
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
+      
+      <div
+        class="ui label"
+        style="float: right; cursor: pointer;"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>保存为图片
+      </div>
+    </footer>
+
+    
+
+    
+      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC10%E7%AF%87_%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC10%E7%AF%87_%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0\/'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    
+
+  </div>
   <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
@@ -253,97 +349,6 @@
 </article>
 
   </div>
-  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-    <div class="ui segment dream-tags-section">
-      <h2 class="ui header">
-        所有标签
-        <div class="ui grey sub header">
-          
-            3 标签
-          
-        </div>
-      </h2>
-
-      
-      
-        
-        <h3 class="ui header">
-          <a href="/tags/github/">github</a>
-          1篇文章
-        </h3>
-        <ul>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Hugo和GitHub搭建博客</a>
-            </li>
-          
-        </ul>
-      
-        
-        <h3 class="ui header">
-          <a href="/tags/hugo/">hugo</a>
-          1篇文章
-        </h3>
-        <ul>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Hugo和GitHub搭建博客</a>
-            </li>
-          
-        </ul>
-      
-        
-        <h3 class="ui header">
-          <a href="/tags/python/">python</a>
-          10篇文章
-        </h3>
-        <ul>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC10%E7%AF%87_%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/">Python代码阅读（第10篇）：随机打乱列表元素</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/">Python代码阅读（第9篇）：返回最长的输入对象</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC8%E7%AF%87_%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/">Python代码阅读（第8篇）：列表元素逻辑判断</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0/">Python代码阅读（第7篇）：列表分组计数</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E7%9A%84%E5%87%BD%E6%95%B0%E5%AF%B9%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/">Python代码阅读：根据给定的函数对列表中的元素进行分组</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8/">Python代码阅读：根据过滤器拆分列表</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E8%BF%87%E6%BB%A4%E6%8E%89%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%80%BC/">Python代码阅读：过滤掉列表中的唯一值</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/">Python代码阅读：列表的最小公倍数</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_digitize/">Python代码阅读：digitize</a>
-            </li>
-          
-            <li>
-              <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_average_by/">Python代码阅读：average_by</a>
-            </li>
-          
-        </ul>
-      
-
-    </div>
-  </div>
 </div>
 
         </section>
@@ -430,30 +435,6 @@
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/tags\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
@@ -469,7 +450,9 @@
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-     
+    
+<script src="/js/html2canvas.min.js"></script>
+
 
     
       
