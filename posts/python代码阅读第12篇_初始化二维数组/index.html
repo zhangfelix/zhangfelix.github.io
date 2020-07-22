@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Desc
+Python代码阅读（第12篇）：初始化二维数组
  | 独白</title>
 
     
@@ -14,30 +14,32 @@ Desc
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Zhang nan" />
+  <meta name="description" content="本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
+本篇阅读的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/about/desc/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" />
 
 
-<meta property="og:title" content="Desc" />
-<meta property="og:description" content="Hi, my name is Zhang nan.
-This is my blog." />
+<meta property="og:title" content="Python代码阅读（第12篇）：初始化二维数组" />
+<meta property="og:description" content="本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/about/desc/" />
-<meta property="article:published_time" content="2020-06-13T19:46:36+08:00" />
-<meta property="article:modified_time" content="2020-06-13T19:46:36+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" />
+<meta property="article:published_time" content="2020-07-22T12:23:53+08:00" />
+<meta property="article:modified_time" content="2020-07-22T12:23:53+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Desc"/>
-<meta name="twitter:description" content="Hi, my name is Zhang nan.
-This is my blog."/>
+<meta name="twitter:title" content="Python代码阅读（第12篇）：初始化二维数组"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -89,18 +91,33 @@ This is my blog."/>
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Desc
-          <div class="sub header">@ Nan · Saturday, Jun 13, 2020 · 1 分钟阅读 · 更新于 Jun 13, 2020</div>
+          Python代码阅读（第12篇）：初始化二维数组
+          <div class="sub header">@ Zhang nan · Wednesday, Jul 22, 2020 · 2 分钟阅读 · 更新于 Jul 22, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>Hi, my name is Zhang nan.</p>
-<p>This is my blog.</p>
-</article>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="initialize_2d_list"><code>initialize_2d_list</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize_2d_list</span>(w,h, val <span style="color:#f92672">=</span> None):
+  <span style="color:#66d9ef">return</span> [[val <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(w)] <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> range(h)]
+
+<span style="color:#75715e"># EXAMPLES</span>
+initialize_2d_list(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>) <span style="color:#75715e"># [[0,0], [0,0]]</span>
+</code></pre></div><p><code>initialize_2d_list</code>接收二维数组的宽、高和初始值，返回一个二维数组。</p>
+<p>函数通过列表推导式和<code>range()</code>函数生成<code>h</code>行长度为<code>w</code>的列表。列表中的元素的初始值由参数<code>val</code>指定。</p>
+<p><code>[[val for x in range(w)] for y in range(h)]</code>该列表推导式的第一个部分是生成一个列表，该列表长度为<code>w</code>，所有的值为<code>val</code>。第二部分是将第一部分生成的列表作为元素生成一个长度为<code>h</code>的列表。</p>
+<h3 id="range"><code>range</code></h3>
+<p><code>range</code>类型表示不可变的数字序列，通常用于在<code>for</code>循环中循环指定的次数。它有两种形式：<code>class range(stop)</code>和<code>class range(start, stop[, step])</code>。如果省略 step 参数，其默认值为<code>1</code>。 如果省略<code>start</code>参数，其默认值为<code>0</code>，如果<code>step</code>为零则会引发<code>ValueError</code>。</p>
+<p>如果<code>step</code>为正值，确定<code>range r</code>内容的公式为<code>r[i] = start + step*i 其中 i &gt;= 0 且 r[i] &lt; stop</code>。</p>
+<p>如果<code>step</code>为负值，确定<code>range</code>内容的公式仍然为<code>r[i] = start + step*i，但限制条件改为 i &gt;= 0 且 r[i] &gt; stop</code>。</p>
+<p>如果<code>r[0]</code>不符合值的限制条件，则该<code>range</code>对象为空。<code>range</code>对象确实支持负索引，但是会将其解读为从正索引所确定的序列的末尾开始索引。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
       
-          <a class="ui label">暂无标签</a>
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
       
       <div
         class="ui label"
@@ -120,8 +137,8 @@ This is my blog."/>
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/about\/desc\/';  
-            this.page.identifier = '\/about\/desc\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84\/'; 
           };
 
           (function() { 
@@ -406,30 +423,6 @@ This is my blog."/>
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/about\/desc\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
