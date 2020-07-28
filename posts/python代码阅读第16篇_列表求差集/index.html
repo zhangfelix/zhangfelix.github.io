@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第12篇）：初始化二维数组
+Python代码阅读（第16篇）：列表求差集
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第12篇）：初始化二维数组
 
   
   <meta name="author" content="Zhang nan" />
-  <meta name="description" content="本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
+  <meta name="description" content="本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差difference，列表中所有元素根据条件函数求差difference_by，列表中所有元素根据条件函数求对称差symmetric_difference_by。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第12篇）：初始化二维数组
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86/" />
 
 
-<meta property="og:title" content="Python代码阅读（第12篇）：初始化二维数组" />
-<meta property="og:description" content="本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
+<meta property="og:title" content="Python代码阅读（第16篇）：列表求差集" />
+<meta property="og:description" content="本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差difference，列表中所有元素根据条件函数求差difference_by，列表中所有元素根据条件函数求对称差symmetric_difference_by。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" />
-<meta property="article:published_time" content="2020-07-22T12:23:53+08:00" />
-<meta property="article:modified_time" content="2020-07-22T12:23:53+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86/" />
+<meta property="article:published_time" content="2020-07-28T12:26:46+08:00" />
+<meta property="article:modified_time" content="2020-07-28T12:26:46+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第12篇）：初始化二维数组"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
+<meta name="twitter:title" content="Python代码阅读（第16篇）：列表求差集"/>
+<meta name="twitter:description" content="本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差difference，列表中所有元素根据条件函数求差difference_by，列表中所有元素根据条件函数求对称差symmetric_difference_by。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,26 +91,42 @@ Python代码阅读（第12篇）：初始化二维数组
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第12篇）：初始化二维数组
-          <div class="sub header">@ Zhang nan · Wednesday, Jul 22, 2020 · 2 分钟阅读 · 更新于 Jul 22, 2020</div>
+          Python代码阅读（第16篇）：列表求差集
+          <div class="sub header">@ Zhang nan · Tuesday, Jul 28, 2020 · 2 分钟阅读 · 更新于 Jul 28, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差<code>difference</code>，列表中所有元素根据条件函数求差<code>difference_by</code>，列表中所有元素根据条件函数求对称差<code>symmetric_difference_by</code>。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="initialize_2d_list"><code>initialize_2d_list</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize_2d_list</span>(w,h, val <span style="color:#f92672">=</span> None):
-  <span style="color:#66d9ef">return</span> [[val <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(w)] <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> range(h)]
+<h2 id="difference"><code>difference</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">difference</span>(a, b):
+  _b <span style="color:#f92672">=</span> set(b)
+  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> item <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _b]
 
 <span style="color:#75715e"># EXAMPLES</span>
-initialize_2d_list(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>) <span style="color:#75715e"># [[0,0], [0,0]]</span>
-</code></pre></div><p><code>initialize_2d_list</code>接收二维数组的宽、高和初始值，返回一个二维数组。</p>
-<p>函数通过列表推导式和<code>range()</code>函数生成<code>h</code>行长度为<code>w</code>的列表。列表中的元素的初始值由参数<code>val</code>指定。</p>
-<p><code>[[val for x in range(w)] for y in range(h)]</code>该列表推导式的第一个部分是生成一个列表，该列表长度为<code>w</code>，所有的值为<code>val</code>。第二部分是将第一部分生成的列表作为元素生成一个长度为<code>h</code>的列表。</p>
-<h3 id="range"><code>range</code></h3>
-<p><code>range</code>类型表示不可变的数字序列，通常用于在<code>for</code>循环中循环指定的次数。它有两种形式：<code>class range(stop)</code>和<code>class range(start, stop[, step])</code>。如果省略 step 参数，其默认值为<code>1</code>。 如果省略<code>start</code>参数，其默认值为<code>0</code>，如果<code>step</code>为零则会引发<code>ValueError</code>。</p>
-<p>如果<code>step</code>为正值，确定<code>range r</code>内容的公式为<code>r[i] = start + step*i 其中 i &gt;= 0 且 r[i] &lt; stop</code>。</p>
-<p>如果<code>step</code>为负值，确定<code>range</code>内容的公式仍然为<code>r[i] = start + step*i，但限制条件改为 i &gt;= 0 且 r[i] &gt; stop</code>。</p>
-<p>如果<code>r[0]</code>不符合值的限制条件，则该<code>range</code>对象为空。<code>range</code>对象确实支持负索引，但是会将其解读为从正索引所确定的序列的末尾开始索引。</p></article>
+difference([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]) <span style="color:#75715e"># [3]</span>
+</code></pre></div><p><code>difference</code>函数返回两个可迭代对象之间的差。该函数从<code>b</code>中创建一个集合<code>_b</code>，然后在<code>a</code>上使用列表推导式，只保留<code>_b</code>中不包含的值。该函数中<code>a</code>和<code>b</code>是有顺序关系的，<code>a-b</code>是从<code>a</code>中删除<code>b</code>中包含的数据。</p>
+<p><code>set</code>是<code>Python</code>的一个特殊的数据类型，是由不重复元素组成的无序的集。本函数直接使用<code>set</code>类型消除了列表中的重复元素。</p>
+<h2 id="difference_by"><code>difference_by</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">difference_by</span>(a, b, fn):
+  _b <span style="color:#f92672">=</span> set(map(fn, b))
+  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _b]
+
+<span style="color:#75715e"># EXAMPLES</span>
+<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
+difference_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">1.2</span>], [<span style="color:#ae81ff">2.3</span>, <span style="color:#ae81ff">3.4</span>], floor) <span style="color:#75715e"># [1.2]</span>
+difference_by([{ <span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#ae81ff">2</span> }, { <span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#ae81ff">1</span> }], [{ <span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#ae81ff">1</span> }], <span style="color:#66d9ef">lambda</span> v : v[<span style="color:#e6db74">&#39;x&#39;</span>]) <span style="color:#75715e"># [ { x: 2 } ]</span>
+</code></pre></div><p><code>difference_by</code>函数接收两个列表和一个过滤条件函数。将提供的函数应用于两个列表中的每个元素后，返回两个原始列表的差。函数通过对<code>b</code>中的每个元素应用<code>fn</code>来创建一个集合，然后在<code>a</code>上使用列表推导式与<code>fn</code>相结合，只保留之前创建的集合<code>_b</code>中没有包含的值。</p>
+<p>特别的，当过滤条件函数是<code>lamda x:x</code>时，函数转化为直接求取两个列表的差。</p>
+<h2 id="symmetric_difference_by"><code>symmetric_difference_by</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">symmetric_difference_by</span>(a, b, fn):
+  _a, _b <span style="color:#f92672">=</span> set(map(fn, a)), set(map(fn, b))
+  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _b] <span style="color:#f92672">+</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> b <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _a]
+
+<span style="color:#75715e"># EXAMPLES</span>
+<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
+symmetric_difference_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">1.2</span>], [<span style="color:#ae81ff">2.3</span>, <span style="color:#ae81ff">3.4</span>],floor) <span style="color:#75715e"># [1.2, 3.4]</span>
+</code></pre></div><p><code>symmetric_difference_by</code>函数对两个列表中的每个列表元素应用所提供的函数后，返回两个原始列表之间的对称差。函数通过分别对每个列表中的每个元素应用<code>fn</code>来创建两个集合<code>_a</code>和<code>_b</code>，然后在每个元素上使用列表理解与<code>fn</code>相结合，只保留不包含在之前创建的其他集合中的值（在<code>a</code> 中，不在<code>_b</code>中；在<code>b</code>中，不在<code>_a</code>中。）。</p>
+<p>特别的，当过滤条件函数是<code>lamda x:x</code>时，函数转化为直接求取两个列表的对称差。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -137,8 +153,8 @@ initialize_2d_list(<span style="color:#ae81ff">2</span>, <span style="color:#ae8
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86\/'; 
           };
 
           (function() { 
