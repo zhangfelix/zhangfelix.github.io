@@ -6,10 +6,20 @@
     <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 03 Aug 2020 12:24:50 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2020 19:25:19 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第21篇）：将变量名称转换为蛇式命名风格</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC21%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E8%9B%87%E5%BC%8F%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/</link>
+      <pubDate>Thu, 06 Aug 2020 19:25:19 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC21%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E8%9B%87%E5%BC%8F%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现将变量名称转换为蛇式命名风格（snake case）的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第20篇）：展开嵌套列表2</title>
