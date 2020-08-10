@@ -6,10 +6,20 @@
     <description>Recent content on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 06 Aug 2020 19:25:19 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2020 18:30:37 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第22篇）：从源字典映射出新字典</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC22%E7%AF%87_%E4%BB%8E%E6%BA%90%E5%AD%97%E5%85%B8%E6%98%A0%E5%B0%84%E5%87%BA%E6%96%B0%E5%AD%97%E5%85%B8/</link>
+      <pubDate>Mon, 10 Aug 2020 18:30:37 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC22%E7%AF%87_%E4%BB%8E%E6%BA%90%E5%AD%97%E5%85%B8%E6%98%A0%E5%B0%84%E5%87%BA%E6%96%B0%E5%AD%97%E5%85%B8/</guid>
+      <description>&lt;p&gt;本篇阅读的代码基于输入的源字典创建一个新的字典，保持&lt;code&gt;key&lt;/code&gt;值不变，&lt;code&gt;vaule&lt;/code&gt;值是源字典对应&lt;code&gt;vaule&lt;/code&gt;进行映射获得的。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第21篇）：将变量名称转换为蛇式命名风格</title>
