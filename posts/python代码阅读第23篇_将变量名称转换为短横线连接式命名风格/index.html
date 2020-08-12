@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Desc
+Python代码阅读（第23篇）：将变量名称转换为短横线连接式命名风格
  | 独白</title>
 
     
@@ -14,30 +14,32 @@ Desc
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Zhang nan" />
+  <meta name="description" content="本篇阅读的代码实现将变量名称转换为短横线连接式命名风格（kebab case）的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/about/desc/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC23%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%9F%AD%E6%A8%AA%E7%BA%BF%E8%BF%9E%E6%8E%A5%E5%BC%8F%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" />
 
 
-<meta property="og:title" content="Desc" />
-<meta property="og:description" content="Hi, my name is Zhang nan.
-This is my blog." />
+<meta property="og:title" content="Python代码阅读（第23篇）：将变量名称转换为短横线连接式命名风格" />
+<meta property="og:description" content="本篇阅读的代码实现将变量名称转换为短横线连接式命名风格（kebab case）的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/about/desc/" />
-<meta property="article:published_time" content="2020-06-13T19:46:36+08:00" />
-<meta property="article:modified_time" content="2020-06-13T19:46:36+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC23%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%9F%AD%E6%A8%AA%E7%BA%BF%E8%BF%9E%E6%8E%A5%E5%BC%8F%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" />
+<meta property="article:published_time" content="2020-08-12T12:10:25+08:00" />
+<meta property="article:modified_time" content="2020-08-12T12:10:25+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Desc"/>
-<meta name="twitter:description" content="Hi, my name is Zhang nan.
-This is my blog."/>
+<meta name="twitter:title" content="Python代码阅读（第23篇）：将变量名称转换为短横线连接式命名风格"/>
+<meta name="twitter:description" content="本篇阅读的代码实现将变量名称转换为短横线连接式命名风格（kebab case）的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -89,18 +91,37 @@ This is my blog."/>
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Desc
-          <div class="sub header">@ Nan · Saturday, Jun 13, 2020 · 1 分钟阅读 · 更新于 Jun 13, 2020</div>
+          Python代码阅读（第23篇）：将变量名称转换为短横线连接式命名风格
+          <div class="sub header">@ Zhang nan · Wednesday, Aug 12, 2020 · 1 分钟阅读 · 更新于 Aug 12, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>Hi, my name is Zhang nan.</p>
-<p>This is my blog.</p>
-</article>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现将变量名称转换为短横线连接式命名风格（<code>kebab case</code>）的功能。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="kebab"><code>kebab</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> re <span style="color:#f92672">import</span> sub
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">kebab</span>(s):
+  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">.</span>join(
+    sub(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;(\s|_|-)+&#34;</span>,<span style="color:#e6db74">&#34; &#34;</span>,
+    sub(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+&#34;</span>,
+    <span style="color:#66d9ef">lambda</span> mo: <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> mo<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>lower(), s))<span style="color:#f92672">.</span>split())
+
+<span style="color:#75715e"># EXAMPLES</span>
+kebab(<span style="color:#e6db74">&#39;camelCase&#39;</span>) <span style="color:#75715e"># &#39;camel-case&#39;</span>
+kebab(<span style="color:#e6db74">&#39;some text&#39;</span>) <span style="color:#75715e"># &#39;some-text&#39;</span>
+kebab(<span style="color:#e6db74">&#39;some-mixed_string With spaces_underscores-and-hyphens&#39;</span>) <span style="color:#75715e"># &#39;some-mixed-string-with-spaces-underscores-and-hyphens&#39;</span>
+kebab(<span style="color:#e6db74">&#39;AllThe-small Things&#39;</span>) <span style="color:#75715e"># &#34;all-the-small-things&#34;</span>
+</code></pre></div><p>函数kebab接收一个字符串，使用<a href="https://docs.python.org/zh-cn/3.8/library/re.html#module-re">正则表达式</a>将字符串变形、分解成单词，并加上<code>-</code>作为分隔符组合起来。</p>
+<p>函数最内层的<code>re.sub(pattern, repl, string, count=0, flags=0)</code>函数使用正则表达式将字符串中的单词匹配出来。然后使用<code>repl</code>函数<code>lambda mo: ' ' + mo.group(0).lower()</code>来处理匹配到的单词，将单词用空格分开，并转换成小写。<code>repl</code>函数将匹配信息作为<code>mo</code>传入函数，<code>mo.group(0)</code>返回匹配到的字符串。</p>
+<p>第二层<code>sub</code>函数将各种空白字符、下划线以及短横线都先统一替换成空格。然后再将字符串根据空格分割成单词。</p>
+<p>最后函数将分割出来的单词使用短横线<code>'-'</code>连接起来，即可得到<code>kebab case</code>风格的命名字符串。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
       
-          <a class="ui label">暂无标签</a>
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
       
       <div
         class="ui label"
@@ -120,8 +141,8 @@ This is my blog."/>
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/about\/desc\/';  
-            this.page.identifier = '\/about\/desc\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC23%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%9F%AD%E6%A8%AA%E7%BA%BF%E8%BF%9E%E6%8E%A5%E5%BC%8F%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC23%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%9F%AD%E6%A8%AA%E7%BA%BF%E8%BF%9E%E6%8E%A5%E5%BC%8F%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC\/'; 
           };
 
           (function() { 
@@ -472,30 +493,6 @@ This is my blog."/>
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/about\/desc\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
