@@ -6,10 +6,20 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 19 Aug 2020 17:28:14 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2020 17:12:59 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第27篇）：将变量名转换成驼峰形式</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC27%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E8%BD%AC%E6%8D%A2%E6%88%90%E9%A9%BC%E5%B3%B0%E5%BD%A2%E5%BC%8F/</link>
+      <pubDate>Thu, 20 Aug 2020 17:12:59 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC27%E7%AF%87_%E5%B0%86%E5%8F%98%E9%87%8F%E5%90%8D%E8%BD%AC%E6%8D%A2%E6%88%90%E9%A9%BC%E5%B3%B0%E5%BD%A2%E5%BC%8F/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现将变量名称转换为驼峰形式。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第26篇）：将列表映射成字典</title>
