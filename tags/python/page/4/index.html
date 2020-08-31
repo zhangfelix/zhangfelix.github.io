@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第7篇）：列表分组计数
+
+
+  Python
+
+
+
+
  | 独白</title>
 
     
@@ -14,29 +20,27 @@ Python代码阅读（第7篇）：列表分组计数
 
 
   
-  <meta name="author" content="Zhang nan" />
-  <meta name="description" content="本文阅读的代码将根据给定的函数对列表中的元素进行分组，并返回每组中元素的数量。
-" />
+  <meta name="author" content="Nan" />
+  <meta name="description" content="我的声音" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0/" />
+<link rel="canonical" href="https://www.zhangfelix.com/tags/python/" />
 
 
-<meta property="og:title" content="Python代码阅读（第7篇）：列表分组计数" />
-<meta property="og:description" content="本文阅读的代码将根据给定的函数对列表中的元素进行分组，并返回每组中元素的数量。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0/" />
-<meta property="article:published_time" content="2020-06-28T13:44:44+08:00" />
-<meta property="article:modified_time" content="2020-06-28T13:44:44+08:00" />
+<meta property="og:title" content="Python" />
+<meta property="og:description" content="我的声音" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.zhangfelix.com/tags/python/" />
+<meta property="og:updated_time" content="2020-08-31T14:58:13+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第7篇）：列表分组计数"/>
-<meta name="twitter:description" content="本文阅读的代码将根据给定的函数对列表中的元素进行分组，并返回每组中元素的数量。"/>
+<meta name="twitter:title" content="Python"/>
+<meta name="twitter:description" content="我的声音"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -83,106 +87,7 @@ Python代码阅读（第7篇）：列表分组计数
 
           
 <div class="ui centered relaxed grid dream-grid">
-  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
-
-    <section class="ui top attached segment" id="dream-save-post-as-img">
-      <header style="margin-top: 0 !important;">
-        <h2 class="ui header">
-          Python代码阅读（第7篇）：列表分组计数
-          <div class="sub header">@ Zhang nan · Sunday, Jun 28, 2020 · 2 分钟阅读 · 更新于 Jun 28, 2020</div>
-        </h2>
-      </header>
-      <article style="margin-top: 2rem;"><p>本文阅读的代码将根据给定的函数对列表中的元素进行分组，并返回每组中元素的数量。</p>
-<h2 id="count_by1"><code>count_by</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_by</span>(arr, fn<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x):
-  key <span style="color:#f92672">=</span> {}
-  <span style="color:#66d9ef">for</span> el <span style="color:#f92672">in</span> map(fn, arr):
-    key[el] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> el <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> key <span style="color:#66d9ef">else</span> key[el] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">return</span> key
-
-<span style="color:#75715e"># EXAMPLES</span>
-<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
-count_by([<span style="color:#ae81ff">6.1</span>, <span style="color:#ae81ff">4.2</span>, <span style="color:#ae81ff">6.3</span>], floor) <span style="color:#75715e"># {6: 2, 4: 1}</span>
-count_by([<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#e6db74">&#39;two&#39;</span>, <span style="color:#e6db74">&#39;three&#39;</span>], len) <span style="color:#75715e"># {3: 2, 5: 1}</span>
-</code></pre></div><p><code>count_by</code>根据给定的函数对列表中的元素进行分组，并返回每组中元素的数量。该使用map()使用给定函数映射给定列表的值。在映射上迭代，并在每次出现时增加元素数。</p>
-<p>该函数使用<code>not in</code>判断目前字典中是否含有指定的<code>key</code>，如果不含有，就将该<code>key</code>加入字典，并将对应的<code>value</code>设置为<code>1</code>；如果含有，就将<code>value</code>加<code>1</code>。</p>
-<h2 id="使用字典推导式">使用字典推导式</h2>
-<p>在** Python代码阅读：根据给定的函数对列表中的元素进行分组**中使用了字典推导式，将列表进行了分组。这里也可以使用同样的方式，在分组之后直接获取列表长度。不过这种写法遍历了两次列表，会使程序效率变低。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_by</span>(lst, fn):
-  <span style="color:#66d9ef">return</span> {key : len([el <span style="color:#66d9ef">for</span> el <span style="color:#f92672">in</span> lst <span style="color:#66d9ef">if</span> fn(el) <span style="color:#f92672">==</span> key]) <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> map(fn, lst)}
-</code></pre></div><h2 id="使用collectionsdefaultdict简化代码">使用<code>collections.defaultdict</code>简化代码</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">collections</span><span style="color:#f92672">.</span>defaultdict([default_factory[, <span style="color:#f92672">...</span>]])
-</code></pre></div><p><code>collections.defaultdict</code>包含一个<code>default_factory</code>属性，可以用来快速构造指定样式的字典。</p>
-<p>当使用<code>int</code>作为<code>default_factory</code>，可以使<code>defaultdict</code>用于计数。因此可以直接使用它来简化代码。相比字典推导式的方法，只需要对列表进行一次循环即可。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> <span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> defaultdict
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_by</span>(lst, fn):
-  d <span style="color:#f92672">=</span> defaultdict(int)
-  <span style="color:#66d9ef">for</span> el <span style="color:#f92672">in</span> lst:
-    d[fn(el)] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">return</span> d
-</code></pre></div><p>当使用 <code>list</code> 作为 <code>default_factory</code>时，很轻松地将（键-值对组成的）序列转换为（键-列表组成的）字典。因此我们也可以据此改写** Python代码阅读：根据给定的函数对列表中的元素进行分组**中的实现方式，提高效率。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">group_by</span>(lst, fn):
-  d <span style="color:#f92672">=</span> defaultdict(list)
-  <span style="color:#66d9ef">for</span> el <span style="color:#f92672">in</span> lst:
-    d[fn(el)]<span style="color:#f92672">.</span>append(el)
-  <span style="color:#66d9ef">return</span> d
-
-<span style="color:#75715e"># EXAMPLES</span>
-<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
-group_by([<span style="color:#ae81ff">6.1</span>, <span style="color:#ae81ff">4.2</span>, <span style="color:#ae81ff">6.3</span>], floor) <span style="color:#75715e"># {4: [4.2], 6: [6.1, 6.3]}</span>
-group_by([<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#e6db74">&#39;two&#39;</span>, <span style="color:#e6db74">&#39;three&#39;</span>], len) <span style="color:#75715e"># {3: [&#39;one&#39;, &#39;two&#39;], 5: [&#39;three&#39;]}</span>
-</code></pre></div><section class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1" role="doc-endnote">
-<p>本文阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</section></article>
-    </section>
-
-    <footer class="ui attached segment dream-tags">
-      
-        
-          <a class="ui label" href="/tags/python" title="Python">Python</a>
-        
-      
-      <div
-        class="ui label"
-        style="float: right; cursor: pointer;"
-        onclick="savePostAsImg()">
-        <i class="save icon"></i>保存为图片
-      </div>
-    </footer>
-
-    
-
-    
-      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0\/'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    
-
-  </div>
-  <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
     <div class="ui small circular image">
@@ -480,7 +385,59 @@ group_by([<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#
 </article>
 
   </div>
+
+  
+  
+    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+      
+<article class="ui raised card dream-card" style="box-shadow: none;">
+
+  <div class="image">
+    
+      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb_average_by-cover.jpg" alt="Python代码阅读：average_by" />
+    
+  </div>
+
+  <div class="content">
+    <h2 class="ui medium header">
+      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_average_by/">Python代码阅读：average_by</a>
+    </h2>
+    <div class="meta">
+      <p class="date">Thursday, Jun 18, 2020</p>
+      <p class="author">@ Zhang nan</p>
+    </div>
+    <div class="description">
+      本文中的代码片段来自于30-seconds-of-python。
+
+    </div>
+  </div>
+
+  <div class="extra content">
+    <a>
+      <i class="clock icon"></i>
+      2 分钟阅读
+    </a>
+  </div>
+</article>
+
+    </div>
+  
 </div>
+
+<div class="ui secondary menu dream-menu dream-paginator">
+  
+  <div class="item">
+    <a href="/tags/python/page/3/">
+    
+      <i class="large arrow alternate circle left inverted icon link" title="上一页"></i>
+    
+    </a>
+  </div>
+  
+
+  
+</div>
+
 
         </section>
         <section class="back">
@@ -566,6 +523,30 @@ group_by([<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#
 
   
   
+    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
+      <footer class="ui segment">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/tags\/python\/about';  
+            this.page.identifier = '/about'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    </section>
+  
+
 </div>
 
         </section>
@@ -581,9 +562,7 @@ group_by([<span style="color:#e6db74">&#39;one&#39;</span>, <span style="color:#
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-    
-<script src="/js/html2canvas.min.js"></script>
-
+     
 
     
       
