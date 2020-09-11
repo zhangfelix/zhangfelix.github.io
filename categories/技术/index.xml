@@ -6,10 +6,20 @@
     <description>Recent content in 技术 on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 Sep 2020 12:54:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2020 18:33:46 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第38篇）：根据谓词函数和属性字符串构造判断函数</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC38%E7%AF%87_%E6%A0%B9%E6%8D%AE%E8%B0%93%E8%AF%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%B1%9E%E6%80%A7%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9E%84%E9%80%A0%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Fri, 11 Sep 2020 18:33:46 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC38%E7%AF%87_%E6%A0%B9%E6%8D%AE%E8%B0%93%E8%AF%8D%E5%87%BD%E6%95%B0%E5%92%8C%E5%B1%9E%E6%80%A7%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9E%84%E9%80%A0%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了根据给定的谓词函数和属性字符串，来构造一个判别函数，用来判断字典对象中相应的属性是否满足谓词函数中的条件。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第37篇）：获取两个列表中相同的元素</title>
