@@ -6,10 +6,20 @@
     <description>Recent content in 技术 on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 11 Sep 2020 18:33:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2020 12:30:06 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第39篇）：获取列表出现频率最高的元素</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC39%E7%AF%87_%E8%8E%B7%E5%8F%96%E5%88%97%E8%A1%A8%E5%87%BA%E7%8E%B0%E9%A2%91%E7%8E%87%E6%9C%80%E9%AB%98%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 14 Sep 2020 12:30:06 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC39%E7%AF%87_%E8%8E%B7%E5%8F%96%E5%88%97%E8%A1%A8%E5%87%BA%E7%8E%B0%E9%A2%91%E7%8E%87%E6%9C%80%E9%AB%98%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了获取列表中出现频率最高的元素的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第38篇）：根据谓词函数和属性字符串构造判断函数</title>
