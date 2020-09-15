@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第15篇）：列表求交集
+Python代码阅读（第40篇）：通过两个列表生成字典
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第15篇）：列表求交集
 
   
   <meta name="author" content="Zhang nan" />
-  <meta name="description" content="本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
+  <meta name="description" content="本篇阅读的代码实现了使用两个列表中的元素分别作为key和value生成字典。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第15篇）：列表求交集
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC40%E7%AF%87_%E9%80%9A%E8%BF%87%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%AD%97%E5%85%B8/" />
 
 
-<meta property="og:title" content="Python代码阅读（第15篇）：列表求交集" />
-<meta property="og:description" content="本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
+<meta property="og:title" content="Python代码阅读（第40篇）：通过两个列表生成字典" />
+<meta property="og:description" content="本篇阅读的代码实现了使用两个列表中的元素分别作为key和value生成字典。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86/" />
-<meta property="article:published_time" content="2020-07-27T12:15:18+08:00" />
-<meta property="article:modified_time" content="2020-07-27T12:15:18+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC40%E7%AF%87_%E9%80%9A%E8%BF%87%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%AD%97%E5%85%B8/" />
+<meta property="article:published_time" content="2020-09-15T12:37:57+08:00" />
+<meta property="article:modified_time" content="2020-09-15T12:37:57+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第15篇）：列表求交集"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
+<meta name="twitter:title" content="Python代码阅读（第40篇）：通过两个列表生成字典"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了使用两个列表中的元素分别作为key和value生成字典。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,24 +91,27 @@ Python代码阅读（第15篇）：列表求交集
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第15篇）：列表求交集
-          <div class="sub header">@ Zhang nan · Monday, Jul 27, 2020 · 1 分钟阅读 · 更新于 Jul 27, 2020</div>
+          Python代码阅读（第40篇）：通过两个列表生成字典
+          <div class="sub header">@ Zhang nan · Tuesday, Sep 15, 2020 · 1 分钟阅读 · 更新于 Sep 15, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了使用两个列表中的元素分别作为<code>key</code>和<code>value</code>生成字典。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="intersection_by"><code>intersection_by</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">intersection_by</span>(a, b, fn):
-  _b <span style="color:#f92672">=</span> set(map(fn, b))
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">in</span> _b]
+<h1 id="to_dictionary"><code>to_dictionary</code></h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dictionary</span>(keys, values):
+  <span style="color:#66d9ef">return</span> {key:value <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> zip(keys, values)}
 
 <span style="color:#75715e"># EXAMPLES</span>
-<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
-intersection_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">1.2</span>], [<span style="color:#ae81ff">2.3</span>, <span style="color:#ae81ff">3.4</span>],floor) <span style="color:#75715e"># [2.1]</span>
-</code></pre></div><p><code>intersection_by</code>函数接收两个列表和一个过滤条件函数。将提供的函数应用于两个列表中的每个元素后，返回一个存在于两个列表中的元素的列表。函数通过对<code>b</code>中的每个元素应用<code>fn</code>来创建一个集合，然后在<code>a</code>上结合使用列表推导式和<code>fn</code>来只保留同时存在于两个列表中的值。</p>
-<p><code>map</code>函数之前已经讲解过，它会返回一个迭代器，该迭代器会将变换函数<code>fn</code>应用于所有的列表元素上。</p>
-<p><code>set</code>是<code>Python</code>的一个特殊的数据类型，是由不重复元素组成的无序的集。本函数直接使用<code>set</code>类型消除了列表中的重复元素。</p>
-<p>特别的，当过滤条件函数是<code>lamda x:x</code>时，函数转化为直接求取两个列表的交集。</p></article>
+to_dictionary([<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]) <span style="color:#75715e"># { a: 1, b: 2 }</span>
+</code></pre></div><p><code>to_dictionary</code>函数接收两个列表作为<code>key</code>和<code>value</code>，返回由这两个列表的元素组成的字典。</p>
+<p>函数使用字典推导式生成新的字典，使用列表<code>key</code>中的元素作为字典的键，使用列表<code>value</code>中对应的元素作为对应的值。推导式使用<code>zip</code>函数同时迭代两个列表，获取两个列表中相对应的元素。</p>
+<p><code>zip(*iterables)</code>创建一个聚合了来自每个可迭代对象中的元素的迭代器。它返回一个元组的迭代器，其中的第<code>i</code>个元组包含来自每个参数序列或可迭代对象的第<code>i</code>个元素。 当所输入可迭代对象中最短的一个被耗尽时，迭代器将停止迭代。 当只有一个可迭代对象参数时，它将返回一个单元组的迭代器。不带参数时，它将返回一个空迭代器。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> y <span style="color:#f92672">=</span> [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> zipped <span style="color:#f92672">=</span> zip(x, y)
+<span style="color:#f92672">&gt;&gt;&gt;</span> list(zipped)
+[(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>)]
+</code></pre></div></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -135,8 +138,8 @@ intersection_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae8
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC40%E7%AF%87_%E9%80%9A%E8%BF%87%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%AD%97%E5%85%B8\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC40%E7%AF%87_%E9%80%9A%E8%BF%87%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%AD%97%E5%85%B8\/'; 
           };
 
           (function() { 

@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>
-Python代码阅读（第15篇）：列表求交集
- | 独白</title>
+    <title>首页 | 独白</title>
 
     
   <link href="/global/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -14,32 +12,27 @@ Python代码阅读（第15篇）：列表求交集
 
 
   
-  <meta name="author" content="Zhang nan" />
-  <meta name="description" content="本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
-本篇阅读的代码片段来自于30-seconds-of-python。
-" />
+  <meta name="author" content="Nan" />
+  <meta name="description" content="我的声音" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86/" />
+<link rel="canonical" href="https://www.zhangfelix.com/" />
 
 
-<meta property="og:title" content="Python代码阅读（第15篇）：列表求交集" />
-<meta property="og:description" content="本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
-本篇阅读的代码片段来自于30-seconds-of-python。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86/" />
-<meta property="article:published_time" content="2020-07-27T12:15:18+08:00" />
-<meta property="article:modified_time" content="2020-07-27T12:15:18+08:00" />
+<meta property="og:title" content="独白" />
+<meta property="og:description" content="我的声音" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.zhangfelix.com/" />
+<meta property="og:updated_time" content="2020-09-15T12:37:57+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第15篇）：列表求交集"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
-本篇阅读的代码片段来自于30-seconds-of-python。"/>
+<meta name="twitter:title" content="独白"/>
+<meta name="twitter:description" content="我的声音"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -86,72 +79,7 @@ Python代码阅读（第15篇）：列表求交集
 
           
 <div class="ui centered relaxed grid dream-grid">
-  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
-
-    <section class="ui top attached segment" id="dream-save-post-as-img">
-      <header style="margin-top: 0 !important;">
-        <h2 class="ui header">
-          Python代码阅读（第15篇）：列表求交集
-          <div class="sub header">@ Zhang nan · Monday, Jul 27, 2020 · 1 分钟阅读 · 更新于 Jul 27, 2020</div>
-        </h2>
-      </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。</p>
-<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="intersection_by"><code>intersection_by</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">intersection_by</span>(a, b, fn):
-  _b <span style="color:#f92672">=</span> set(map(fn, b))
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">in</span> _b]
-
-<span style="color:#75715e"># EXAMPLES</span>
-<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
-intersection_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">1.2</span>], [<span style="color:#ae81ff">2.3</span>, <span style="color:#ae81ff">3.4</span>],floor) <span style="color:#75715e"># [2.1]</span>
-</code></pre></div><p><code>intersection_by</code>函数接收两个列表和一个过滤条件函数。将提供的函数应用于两个列表中的每个元素后，返回一个存在于两个列表中的元素的列表。函数通过对<code>b</code>中的每个元素应用<code>fn</code>来创建一个集合，然后在<code>a</code>上结合使用列表推导式和<code>fn</code>来只保留同时存在于两个列表中的值。</p>
-<p><code>map</code>函数之前已经讲解过，它会返回一个迭代器，该迭代器会将变换函数<code>fn</code>应用于所有的列表元素上。</p>
-<p><code>set</code>是<code>Python</code>的一个特殊的数据类型，是由不重复元素组成的无序的集。本函数直接使用<code>set</code>类型消除了列表中的重复元素。</p>
-<p>特别的，当过滤条件函数是<code>lamda x:x</code>时，函数转化为直接求取两个列表的交集。</p></article>
-    </section>
-
-    <footer class="ui attached segment dream-tags">
-      
-        
-          <a class="ui label" href="/tags/python" title="Python">Python</a>
-        
-      
-      <div
-        class="ui label"
-        style="float: right; cursor: pointer;"
-        onclick="savePostAsImg()">
-        <i class="save icon"></i>保存为图片
-      </div>
-    </footer>
-
-    
-
-    
-      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86\/'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    
-
-  </div>
-  <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
     <div class="ui small circular image">
@@ -503,7 +431,61 @@ intersection_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae8
 </article>
 
   </div>
+
+  
+  
+    
+    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+      
+<article class="ui raised card dream-card" style="box-shadow: none;">
+
+  <div class="image">
+    
+      <img src="/post/%e4%bd%bf%e7%94%a8Hugo%e5%92%8cGitHub%e6%90%ad%e5%bb%ba%e5%8d%9a%e5%ae%a2-cover.jpg" alt="使用Hugo和GitHub搭建博客" />
+    
+  </div>
+
+  <div class="content">
+    <h2 class="ui medium header">
+      <a href="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Hugo和GitHub搭建博客</a>
+    </h2>
+    <div class="meta">
+      <p class="date">Saturday, Jun 13, 2020</p>
+      <p class="author">@ Zhang nan</p>
+    </div>
+    <div class="description">
+      折腾了几天博客的框架终于搭建起来了。研究了一番之后，最终还是选择使用Hugo和GitHub来搭建博客。本文介绍了如何使用Hugo来搭建静态博客网站，并将其部署在GitHub上。使用https://&lt;USERNAME&gt;.github.io或者自定义的域名访问博客。
+
+    </div>
+  </div>
+
+  <div class="extra content">
+    <a>
+      <i class="clock icon"></i>
+      8 分钟阅读
+    </a>
+  </div>
+</article>
+
+    </div>
+  
 </div>
+
+<div class="ui secondary menu dream-menu dream-paginator">
+  
+  <div class="item">
+    <a href="/page/4/">
+    
+      <i class="large arrow alternate circle left inverted icon link" title="上一页"></i>
+    
+    </a>
+  </div>
+  
+
+  
+</div>
+
 
         </section>
         <section class="back">
@@ -589,6 +571,30 @@ intersection_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae8
 
   
   
+    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
+      <footer class="ui segment">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/about';  
+            this.page.identifier = '/about'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    </section>
+  
+
 </div>
 
         </section>
@@ -604,9 +610,7 @@ intersection_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae8
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-    
-<script src="/js/html2canvas.min.js"></script>
-
+     
 
     
       
