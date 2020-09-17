@@ -6,10 +6,20 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 15 Sep 2020 12:37:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2020 12:36:40 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第41篇）：矩阵转置</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC41%E7%AF%87_%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
+      <pubDate>Thu, 17 Sep 2020 12:36:40 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC41%E7%AF%87_%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了将一个使用嵌套列表表示的矩阵进行转置的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第40篇）：通过两个列表生成字典</title>
