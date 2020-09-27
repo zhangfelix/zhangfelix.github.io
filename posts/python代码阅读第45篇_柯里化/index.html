@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第11篇）：展开嵌套列表
+Python代码阅读（第45篇）：柯里化
  | 独白</title>
 
     
@@ -15,7 +15,8 @@ Python代码阅读（第11篇）：展开嵌套列表
 
   
   <meta name="author" content="Zhang nan" />
-  <meta name="description" content="本篇阅读的代码实现了展开嵌套列表的功能，将一个嵌套的list展开成一个一维list（不改变原有列表的顺序）。
+  <meta name="description" content="本篇阅读的代码实现了将函数柯里化的功能。
+在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +24,24 @@ Python代码阅读（第11篇）：展开嵌套列表
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC11%E7%AF%87_%E5%B1%95%E5%BC%80%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC45%E7%AF%87_%E6%9F%AF%E9%87%8C%E5%8C%96/" />
 
 
-<meta property="og:title" content="Python代码阅读（第11篇）：展开嵌套列表" />
-<meta property="og:description" content="本篇阅读的代码实现了展开嵌套列表的功能，将一个嵌套的list展开成一个一维list（不改变原有列表的顺序）。
+<meta property="og:title" content="Python代码阅读（第45篇）：柯里化" />
+<meta property="og:description" content="本篇阅读的代码实现了将函数柯里化的功能。
+在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC11%E7%AF%87_%E5%B1%95%E5%BC%80%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8/" />
-<meta property="article:published_time" content="2020-07-21T12:12:15+08:00" />
-<meta property="article:modified_time" content="2020-07-21T12:12:15+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC45%E7%AF%87_%E6%9F%AF%E9%87%8C%E5%8C%96/" />
+<meta property="article:published_time" content="2020-09-27T12:30:16+08:00" />
+<meta property="article:modified_time" content="2020-09-27T12:30:16+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第11篇）：展开嵌套列表"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了展开嵌套列表的功能，将一个嵌套的list展开成一个一维list（不改变原有列表的顺序）。
+<meta name="twitter:title" content="Python代码阅读（第45篇）：柯里化"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了将函数柯里化的功能。
+在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,26 +94,37 @@ Python代码阅读（第11篇）：展开嵌套列表
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第11篇）：展开嵌套列表
-          <div class="sub header">@ Zhang nan · Tuesday, Jul 21, 2020 · 1 分钟阅读 · 更新于 Jul 21, 2020</div>
+          Python代码阅读（第45篇）：柯里化
+          <div class="sub header">@ Zhang nan · Sunday, Sep 27, 2020 · 2 分钟阅读 · 更新于 Sep 27, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了展开嵌套列表的功能，将一个嵌套的list展开成一个一维list（不改变原有列表的顺序）。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了将函数柯里化的功能。</p>
+<p>在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="flatten"><code>flatten</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flatten</span>(lst):
-  <span style="color:#66d9ef">return</span> [x <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> lst <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> y]
+<h2 id="curry"><code>curry</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">curry</span>(fn, <span style="color:#f92672">*</span>args):
+  <span style="color:#66d9ef">return</span> partial(fn,<span style="color:#f92672">*</span>args)
 
 <span style="color:#75715e"># EXAMPLES</span>
-flatten([[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>]]) <span style="color:#75715e"># [1, 2, 3, 4, 5, 6, 7, 8]</span>
-</code></pre></div><p><code>flatten</code>函数接收一个嵌套列表（以列表为元素的列表），返回一个按照原有顺序展开后的一维列表。</p>
-<p>该函数使用了列表推导式进行数据处理。该推导式使用了两层<code>for</code>循环，等价于</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flatten</span>(lst):
-  flatten_list <span style="color:#f92672">=</span> []
-  <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> lst:
-    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> y:
-      flatten_list<span style="color:#f92672">.</span>append(x)
-  <span style="color:#66d9ef">return</span> flatten_list
+add <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x, y: x <span style="color:#f92672">+</span> y
+add10 <span style="color:#f92672">=</span> curry(add, <span style="color:#ae81ff">10</span>)
+
+add10(<span style="color:#ae81ff">20</span>) <span style="color:#75715e"># 30</span>
+</code></pre></div><p><code>curry</code>函数接收一个接受多个参数的初始函数和部分参数，返回接受单一参数的函数。</p>
+<p>函数使用<code>functools.partial()</code>生成一个部分对象。该部分对象被调用时的行为类似于<code>fn</code>给定了部分参数被调用，需要提供剩余参数。</p>
+<p>在直觉上，柯里化声称“如果你固定某些参数，你将得到接受余下参数的一个函数”。所以对于有两个变量的函数<code>x+y</code>，如果固定了<code>y=2</code>，则得到有一个变量的函数<code>x+2</code>。</p>
+<p><code>functools.partial(func, /, *args, **keywords)</code>
+返回一个新的 部分对象，当被调用时其行为类似于 func 附带位置参数<code>args</code>和关键字参数<code>keywords</code>被调用。 如果为调用提供了更多的参数，它们会被附加到<code>args</code>。 如果提供了额外的关键字参数，它们会扩展并重载<code>keywords</code>。 大致等价于:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partial</span>(func, <span style="color:#f92672">/</span>, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>keywords):
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">newfunc</span>(<span style="color:#f92672">*</span>fargs, <span style="color:#f92672">**</span>fkeywords):
+    newkeywords <span style="color:#f92672">=</span> {<span style="color:#f92672">**</span>keywords, <span style="color:#f92672">**</span>fkeywords}
+    <span style="color:#66d9ef">return</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">*</span>fargs, <span style="color:#f92672">**</span>newkeywords)
+  newfunc<span style="color:#f92672">.</span>func <span style="color:#f92672">=</span> func
+  newfunc<span style="color:#f92672">.</span>args <span style="color:#f92672">=</span> args
+  newfunc<span style="color:#f92672">.</span>keywords <span style="color:#f92672">=</span> keywords
+  <span style="color:#66d9ef">return</span> newfunc
 </code></pre></div></article>
     </section>
 
@@ -138,8 +152,8 @@ flatten([[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</sp
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC11%E7%AF%87_%E5%B1%95%E5%BC%80%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC11%E7%AF%87_%E5%B1%95%E5%BC%80%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC45%E7%AF%87_%E6%9F%AF%E9%87%8C%E5%8C%96\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC45%E7%AF%87_%E6%9F%AF%E9%87%8C%E5%8C%96\/'; 
           };
 
           (function() { 

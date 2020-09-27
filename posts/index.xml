@@ -6,10 +6,21 @@
     <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 25 Sep 2020 18:50:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 12:30:16 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第45篇）：柯里化</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC45%E7%AF%87_%E6%9F%AF%E9%87%8C%E5%8C%96/</link>
+      <pubDate>Sun, 27 Sep 2020 12:30:16 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC45%E7%AF%87_%E6%9F%AF%E9%87%8C%E5%8C%96/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了将函数柯里化的功能。&lt;/p&gt;
+&lt;p&gt;在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第44篇）：寻找符合条件的元素的位置</title>
