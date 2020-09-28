@@ -6,10 +6,20 @@
     <description>Recent content on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 27 Sep 2020 12:30:16 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2020 12:30:42 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第46篇）：寻找符合条件的元素</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Mon, 28 Sep 2020 12:30:42 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了在列表中寻找符合条件的元素。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第45篇）：柯里化</title>

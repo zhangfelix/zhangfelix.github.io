@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第16篇）：列表求差集
+Python代码阅读（第46篇）：寻找符合条件的元素
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第16篇）：列表求差集
 
   
   <meta name="author" content="Zhang nan" />
-  <meta name="description" content="本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差difference，列表中所有元素根据条件函数求差difference_by，列表中所有元素根据条件函数求对称差symmetric_difference_by。
+  <meta name="description" content="本篇阅读的代码实现了在列表中寻找符合条件的元素。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第16篇）：列表求差集
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0/" />
 
 
-<meta property="og:title" content="Python代码阅读（第16篇）：列表求差集" />
-<meta property="og:description" content="本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差difference，列表中所有元素根据条件函数求差difference_by，列表中所有元素根据条件函数求对称差symmetric_difference_by。
+<meta property="og:title" content="Python代码阅读（第46篇）：寻找符合条件的元素" />
+<meta property="og:description" content="本篇阅读的代码实现了在列表中寻找符合条件的元素。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86/" />
-<meta property="article:published_time" content="2020-07-28T12:26:46+08:00" />
-<meta property="article:modified_time" content="2020-07-28T12:26:46+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0/" />
+<meta property="article:published_time" content="2020-09-28T12:30:42+08:00" />
+<meta property="article:modified_time" content="2020-09-28T12:30:42+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第16篇）：列表求差集"/>
-<meta name="twitter:description" content="本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差difference，列表中所有元素根据条件函数求差difference_by，列表中所有元素根据条件函数求对称差symmetric_difference_by。
+<meta name="twitter:title" content="Python代码阅读（第46篇）：寻找符合条件的元素"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了在列表中寻找符合条件的元素。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,42 +91,32 @@ Python代码阅读（第16篇）：列表求差集
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第16篇）：列表求差集
-          <div class="sub header">@ Zhang nan · Tuesday, Jul 28, 2020 · 2 分钟阅读 · 更新于 Jul 28, 2020</div>
+          Python代码阅读（第46篇）：寻找符合条件的元素
+          <div class="sub header">@ Zhang nan · Monday, Sep 28, 2020 · 1 分钟阅读 · 更新于 Sep 28, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读三种不同的列表差集的实现方式。分别是列表直接求差<code>difference</code>，列表中所有元素根据条件函数求差<code>difference_by</code>，列表中所有元素根据条件函数求对称差<code>symmetric_difference_by</code>。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了在列表中寻找符合条件的元素。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="difference"><code>difference</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">difference</span>(a, b):
-  _b <span style="color:#f92672">=</span> set(b)
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> item <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _b]
+<h2 id="find"><code>find</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find</span>(lst, fn):
+  <span style="color:#66d9ef">return</span> next(x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> lst <span style="color:#66d9ef">if</span> fn(x))
 
 <span style="color:#75715e"># EXAMPLES</span>
-difference([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]) <span style="color:#75715e"># [3]</span>
-</code></pre></div><p><code>difference</code>函数返回两个可迭代对象之间的差。该函数从<code>b</code>中创建一个集合<code>_b</code>，然后在<code>a</code>上使用列表推导式，只保留<code>_b</code>中不包含的值。该函数中<code>a</code>和<code>b</code>是有顺序关系的，<code>a-b</code>是从<code>a</code>中删除<code>b</code>中包含的数据。</p>
-<p><code>set</code>是<code>Python</code>的一个特殊的数据类型，是由不重复元素组成的无序的集。本函数直接使用<code>set</code>类型消除了列表中的重复元素。</p>
-<h2 id="difference_by"><code>difference_by</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">difference_by</span>(a, b, fn):
-  _b <span style="color:#f92672">=</span> set(map(fn, b))
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _b]
+find([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], <span style="color:#66d9ef">lambda</span> n: n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 1</span>
+</code></pre></div><p><code>find</code>函数接收一个列表和一个判别函数，返回第一个使判别函数为真的元素。</p>
+<p>函数使用列表推导式和<code>next()</code>来返回<code>lst</code>中第一个 是判别函数<code>fn</code>的返回为<code>True</code>的元素。</p>
+<p><code>next(iterator[, default])</code>获取迭代器的下一个元素。如果迭代器耗尽，则返回给定的 default，如果没有默认值则触发 <code>StopIteration</code></p>
+<h2 id="find_last"><code>find_last</code></h2>
+<p>类似的，可以实现<code>find_last</code>函数，使用<code>lst[::-1]</code>切片形式，将列表倒序。然后使用相同的方法获取使判别函数<code>fn</code>为<code>True</code>的元素。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_last</span>(lst, fn):
+  <span style="color:#66d9ef">return</span> next(x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> lst[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> fn(x))
 
 <span style="color:#75715e"># EXAMPLES</span>
-<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
-difference_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">1.2</span>], [<span style="color:#ae81ff">2.3</span>, <span style="color:#ae81ff">3.4</span>], floor) <span style="color:#75715e"># [1.2]</span>
-difference_by([{ <span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#ae81ff">2</span> }, { <span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#ae81ff">1</span> }], [{ <span style="color:#e6db74">&#39;x&#39;</span>: <span style="color:#ae81ff">1</span> }], <span style="color:#66d9ef">lambda</span> v : v[<span style="color:#e6db74">&#39;x&#39;</span>]) <span style="color:#75715e"># [ { x: 2 } ]</span>
-</code></pre></div><p><code>difference_by</code>函数接收两个列表和一个过滤条件函数。将提供的函数应用于两个列表中的每个元素后，返回两个原始列表的差。函数通过对<code>b</code>中的每个元素应用<code>fn</code>来创建一个集合，然后在<code>a</code>上使用列表推导式与<code>fn</code>相结合，只保留之前创建的集合<code>_b</code>中没有包含的值。</p>
-<p>特别的，当过滤条件函数是<code>lamda x:x</code>时，函数转化为直接求取两个列表的差。</p>
-<h2 id="symmetric_difference_by"><code>symmetric_difference_by</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">symmetric_difference_by</span>(a, b, fn):
-  _a, _b <span style="color:#f92672">=</span> set(map(fn, a)), set(map(fn, b))
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _b] <span style="color:#f92672">+</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> b <span style="color:#66d9ef">if</span> fn(item) <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _a]
-
-<span style="color:#75715e"># EXAMPLES</span>
-<span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> floor
-symmetric_difference_by([<span style="color:#ae81ff">2.1</span>, <span style="color:#ae81ff">1.2</span>], [<span style="color:#ae81ff">2.3</span>, <span style="color:#ae81ff">3.4</span>],floor) <span style="color:#75715e"># [1.2, 3.4]</span>
-</code></pre></div><p><code>symmetric_difference_by</code>函数对两个列表中的每个列表元素应用所提供的函数后，返回两个原始列表之间的对称差。函数通过分别对每个列表中的每个元素应用<code>fn</code>来创建两个集合<code>_a</code>和<code>_b</code>，然后在每个元素上使用列表理解与<code>fn</code>相结合，只保留不包含在之前创建的其他集合中的值（在<code>a</code> 中，不在<code>_b</code>中；在<code>b</code>中，不在<code>_a</code>中。）。</p>
-<p>特别的，当过滤条件函数是<code>lamda x:x</code>时，函数转化为直接求取两个列表的对称差。</p></article>
+find_last([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], <span style="color:#66d9ef">lambda</span> n: n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 3</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> lst <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> lst[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+[<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]
+</code></pre></div></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -153,8 +143,8 @@ symmetric_difference_by([<span style="color:#ae81ff">2.1</span>, <span style="co
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC16%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B7%AE%E9%9B%86\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0\/'; 
           };
 
           (function() { 
