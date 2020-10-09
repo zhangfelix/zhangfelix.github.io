@@ -6,10 +6,20 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 29 Sep 2020 18:31:39 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2020 16:01:54 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第48篇）：返回最大元素的索引</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC48%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0%E7%9A%84%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Fri, 09 Oct 2020 16:01:54 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC48%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0%E7%9A%84%E7%B4%A2%E5%BC%95/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了返回列表中最大元素索引的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第47篇）：从列表右边开始执行给定函数</title>
