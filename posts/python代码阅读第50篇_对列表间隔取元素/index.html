@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第26篇）：将列表映射成字典
+Python代码阅读（第50篇）：对列表间隔取元素
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第26篇）：将列表映射成字典
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本篇阅读的代码使用提供的映射函数，将传入的列表映射成字典。
+  <meta name="description" content="本篇阅读的代码实现了在一个列表中每间隔n个数取一个元素的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第26篇）：将列表映射成字典
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC26%E7%AF%87_%E5%B0%86%E5%88%97%E8%A1%A8%E6%98%A0%E5%B0%84%E6%88%90%E5%AD%97%E5%85%B8/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC50%E7%AF%87_%E5%AF%B9%E5%88%97%E8%A1%A8%E9%97%B4%E9%9A%94%E5%8F%96%E5%85%83%E7%B4%A0/" />
 
 
-<meta property="og:title" content="Python代码阅读（第26篇）：将列表映射成字典" />
-<meta property="og:description" content="本篇阅读的代码使用提供的映射函数，将传入的列表映射成字典。
+<meta property="og:title" content="Python代码阅读（第50篇）：对列表间隔取元素" />
+<meta property="og:description" content="本篇阅读的代码实现了在一个列表中每间隔n个数取一个元素的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC26%E7%AF%87_%E5%B0%86%E5%88%97%E8%A1%A8%E6%98%A0%E5%B0%84%E6%88%90%E5%AD%97%E5%85%B8/" />
-<meta property="article:published_time" content="2020-08-19T17:28:14+08:00" />
-<meta property="article:modified_time" content="2020-08-19T17:28:14+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC50%E7%AF%87_%E5%AF%B9%E5%88%97%E8%A1%A8%E9%97%B4%E9%9A%94%E5%8F%96%E5%85%83%E7%B4%A0/" />
+<meta property="article:published_time" content="2020-10-13T12:30:32+08:00" />
+<meta property="article:modified_time" content="2020-10-13T12:30:32+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第26篇）：将列表映射成字典"/>
-<meta name="twitter:description" content="本篇阅读的代码使用提供的映射函数，将传入的列表映射成字典。
+<meta name="twitter:title" content="Python代码阅读（第50篇）：对列表间隔取元素"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了在一个列表中每间隔n个数取一个元素的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,23 +91,25 @@ Python代码阅读（第26篇）：将列表映射成字典
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第26篇）：将列表映射成字典
-          <div class="sub header">@ Felix · Wednesday, Aug 19, 2020 · 1 分钟阅读 · 更新于 Aug 19, 2020</div>
+          Python代码阅读（第50篇）：对列表间隔取元素
+          <div class="sub header">@ Felix · Tuesday, Oct 13, 2020 · 1 分钟阅读 · 更新于 Oct 13, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码使用提供的映射函数，将传入的列表映射成字典。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了在一个列表中每间隔<code>n</code>个数取一个元素的功能。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="map_dictionary"><code>map_dictionary</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">map_dictionary</span>(itr, fn):
-  ret <span style="color:#f92672">=</span> {}
-  <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> itr:
-    ret[x] <span style="color:#f92672">=</span> fn(x)
-  <span style="color:#66d9ef">return</span> ret
+<h2 id="every_nth"><code>every_nth</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">every_nth</span>(lst, nth):
+  <span style="color:#66d9ef">return</span> lst[nth <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>::nth]
 
 <span style="color:#75715e"># EXAMPLES</span>
-map_dictionary([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>], <span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">*</span> x) <span style="color:#75715e"># { 1: 1, 2: 4, 3: 9 }</span>
-</code></pre></div><p><code>map_dictionary</code>函数接收一个列表以及一个映射函数，并返回一个字典，字典的<code>key</code>是列表的元素，字典的<code>value</code>是对<code>key</code>使用映射函数<code>fn</code>之后的返回值。</p>
-<p>函数先使用<code>ret = {}</code>新建一个空字典。然后用<code>for</code>循环遍历每一个列表元素。<code>ret[x] = value</code>这种形式将会改变<code>key-value</code>对的值，或者增加一对。最后，函数返回新生成的字典。</p></article>
+every_nth([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>], <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># [ 2, 4, 6 ]</span>
+</code></pre></div><p><code>every_nth</code>函数接收一个列表和间隔数<code>nth</code>，返回列表的取值结果。</p>
+<p>函数使用列表切片的方式，获取原列表每间隔<code>nth</code>个元素取值的结果。</p>
+<p><code>s[i:j:k]</code>的形式是<code>s</code>从<code>i</code>到<code>j</code>步长为<code>k</code>的切片。<code>s</code>从<code>i</code>到<code>j</code>步长为<code>k</code>的切片被定义为所有满足<code>0 &lt;= n &lt; (j-i)/k</code>的索引号<code>x = i + n*k</code>的项组成的序列。 换句话说，索引号为<code>i</code>,<code>i+k</code>,<code>i+2*k</code>,<code>i+3*k</code>，以此类推，当达到<code>j</code>时停止 (但一定不包括<code>j</code>)。 当<code>k</code>为正值时，<code>i</code>和<code>j</code>会被减至不大于<code>len(s)</code>。 当<code>k</code>为负值时，<code>i</code>和<code>j</code>会被减至不大于<code>len(s) - 1</code>。 如果<code>i</code>或<code>j</code>被省略或为<code>None</code>，它们会定义为列表一端可以达到的“终止”值 (是哪一端的终止值则取决于<code>k</code>的符号)。 请注意，<code>k</code>不可为零。 如果<code>k 为</code>None，则当作<code>1</code>处理。</p>
+<p>因为列表的索引是从<code>0</code>开始的，所以第一个被取出的数的索引是<code>nth-1</code>。因为<code>j</code>被省略，所以会一直计算到列表的末端。我们使用一个不那么“恰好”的例子看一下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> every_nth([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>], <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># [ 2, 4, 6 ]</span>
+[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>]
+</code></pre></div></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -134,8 +136,8 @@ map_dictionary([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff"
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC26%E7%AF%87_%E5%B0%86%E5%88%97%E8%A1%A8%E6%98%A0%E5%B0%84%E6%88%90%E5%AD%97%E5%85%B8\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC26%E7%AF%87_%E5%B0%86%E5%88%97%E8%A1%A8%E6%98%A0%E5%B0%84%E6%88%90%E5%AD%97%E5%85%B8\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC50%E7%AF%87_%E5%AF%B9%E5%88%97%E8%A1%A8%E9%97%B4%E9%9A%94%E5%8F%96%E5%85%83%E7%B4%A0\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC50%E7%AF%87_%E5%AF%B9%E5%88%97%E8%A1%A8%E9%97%B4%E9%9A%94%E5%8F%96%E5%85%83%E7%B4%A0\/'; 
           };
 
           (function() { 
