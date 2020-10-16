@@ -6,10 +6,20 @@
     <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 15 Oct 2020 19:02:33 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2020 12:30:55 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第53篇）：字符串重复拼接</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC53%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8D%E5%A4%8D%E6%8B%BC%E6%8E%A5/</link>
+      <pubDate>Fri, 16 Oct 2020 12:30:55 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC53%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8D%E5%A4%8D%E6%8B%BC%E6%8E%A5/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了将字符串重复&lt;code&gt;n&lt;/code&gt;次的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第52篇）：返回列表的头部和尾部</title>
