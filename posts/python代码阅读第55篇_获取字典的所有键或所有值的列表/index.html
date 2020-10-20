@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>首页 | 独白</title>
+    <title>
+Python代码阅读（第55篇）：获取字典的所有键或所有值的列表
+ | 独白</title>
 
     
   <link href="/global/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -12,27 +14,32 @@
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Felix" />
+  <meta name="description" content="本篇阅读的代码分别生成了给定字典的键、值列表。
+本篇阅读的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC55%E7%AF%87_%E8%8E%B7%E5%8F%96%E5%AD%97%E5%85%B8%E7%9A%84%E6%89%80%E6%9C%89%E9%94%AE%E6%88%96%E6%89%80%E6%9C%89%E5%80%BC%E7%9A%84%E5%88%97%E8%A1%A8/" />
 
 
-<meta property="og:title" content="独白" />
-<meta property="og:description" content="我的声音" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.zhangfelix.com/" />
-<meta property="og:updated_time" content="2020-10-20T12:37:57+08:00" />
+<meta property="og:title" content="Python代码阅读（第55篇）：获取字典的所有键或所有值的列表" />
+<meta property="og:description" content="本篇阅读的代码分别生成了给定字典的键、值列表。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC55%E7%AF%87_%E8%8E%B7%E5%8F%96%E5%AD%97%E5%85%B8%E7%9A%84%E6%89%80%E6%9C%89%E9%94%AE%E6%88%96%E6%89%80%E6%9C%89%E5%80%BC%E7%9A%84%E5%88%97%E8%A1%A8/" />
+<meta property="article:published_time" content="2020-10-20T12:37:57+08:00" />
+<meta property="article:modified_time" content="2020-10-20T12:37:57+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="独白"/>
-<meta name="twitter:description" content="我的声音"/>
+<meta name="twitter:title" content="Python代码阅读（第55篇）：获取字典的所有键或所有值的列表"/>
+<meta name="twitter:description" content="本篇阅读的代码分别生成了给定字典的键、值列表。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -79,7 +86,86 @@
 
           
 <div class="ui centered relaxed grid dream-grid">
-  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
+
+    <section class="ui top attached segment" id="dream-save-post-as-img">
+      <header style="margin-top: 0 !important;">
+        <h2 class="ui header">
+          Python代码阅读（第55篇）：获取字典的所有键或所有值的列表
+          <div class="sub header">@ Felix · Tuesday, Oct 20, 2020 · 1 分钟阅读 · 更新于 Oct 20, 2020</div>
+        </h2>
+      </header>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码分别生成了给定字典的键、值列表。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="keys_only"><code>keys_only</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">keys_only</span>(flat_dict):
+  <span style="color:#66d9ef">return</span> list(flat_dict<span style="color:#f92672">.</span>keys())
+
+<span style="color:#75715e"># EXAMPLES</span>
+ages <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Peter&#34;</span>: <span style="color:#ae81ff">10</span>,
+  <span style="color:#e6db74">&#34;Isabel&#34;</span>: <span style="color:#ae81ff">11</span>,
+  <span style="color:#e6db74">&#34;Anna&#34;</span>: <span style="color:#ae81ff">9</span>,
+}
+keys_only(ages) <span style="color:#75715e"># [&#39;Peter&#39;, &#39;Isabel&#39;, &#39;Anna&#39;]</span>
+</code></pre></div><p><code>keys_only</code>函数接收一个字典，返回该字典的键组成的列表。</p>
+<p>函数使用<code>dict.keys()</code>方法获得字典键的视图对象，该对象可以被迭代，因此可以使用<code>list()</code>生成对应的列表。</p>
+<h2 id="values_only"><code>values_only</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">values_only</span>(flat_dict):
+  <span style="color:#66d9ef">return</span> list(flat_dict<span style="color:#f92672">.</span>values())
+
+<span style="color:#75715e"># EXAMPLES</span>
+ages <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Peter&#34;</span>: <span style="color:#ae81ff">10</span>,
+  <span style="color:#e6db74">&#34;Isabel&#34;</span>: <span style="color:#ae81ff">11</span>,
+  <span style="color:#e6db74">&#34;Anna&#34;</span>: <span style="color:#ae81ff">9</span>,
+}
+values_only(ages) <span style="color:#75715e"># [10, 11, 9]</span>
+</code></pre></div><p><code>keys_only</code>函数接收一个字典，返回该字典的值组成的列表。</p>
+<p>和<code>keys_only</code>函数一样，使用<code>dict.values()</code>会生成字典值组成的视图对象。然后使用<code>list()</code>生成对应的列表。</p></article>
+    </section>
+
+    <footer class="ui attached segment dream-tags">
+      
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
+      
+      <div
+        class="ui label"
+        style="float: right; cursor: pointer;"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>保存为图片
+      </div>
+    </footer>
+
+    
+
+    
+      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC55%E7%AF%87_%E8%8E%B7%E5%8F%96%E5%AD%97%E5%85%B8%E7%9A%84%E6%89%80%E6%9C%89%E9%94%AE%E6%88%96%E6%89%80%E6%9C%89%E5%80%BC%E7%9A%84%E5%88%97%E8%A1%A8\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC55%E7%AF%87_%E8%8E%B7%E5%8F%96%E5%AD%97%E5%85%B8%E7%9A%84%E6%89%80%E6%9C%89%E9%94%AE%E6%88%96%E6%89%80%E6%9C%89%E5%80%BC%E7%9A%84%E5%88%97%E8%A1%A8\/'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    
+
+  </div>
+  <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
     <div class="ui small circular image">
@@ -521,401 +607,7 @@
 </article>
 
   </div>
-
-  
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac15%e7%af%87%ef%bc%89_%e5%88%97%e8%a1%a8%e6%b1%82%e4%ba%a4%e9%9b%86-cover.jpg" alt="Python代码阅读（第15篇）：列表求交集" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC15%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E4%BA%A4%E9%9B%86/">Python代码阅读（第15篇）：列表求交集</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Monday, Jul 27, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码实现了实现了两个列表求交集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取交集，交集中是两个列表的原始元素。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac14%e7%af%87%ef%bc%89_%e5%88%97%e8%a1%a8%e6%b1%82%e5%b9%b6%e9%9b%86-cover.jpg" alt="Python代码阅读（第14篇）：列表求并集" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC14%E7%AF%87_%E5%88%97%E8%A1%A8%E6%B1%82%E5%B9%B6%E9%9B%86/">Python代码阅读（第14篇）：列表求并集</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Friday, Jul 24, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码实现了实现了两个列表求并集的功能。同时支持使用一个过滤条件函数，列表中所有元素根据该条件求取并集，并集中是两个列表的原始元素。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac13%e7%af%87%ef%bc%89_%e6%a3%80%e6%b5%8b%e5%88%97%e8%a1%a8%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0%e6%98%af%e5%90%a6%e9%83%bd%e4%b8%80%e6%a0%b7-cover.jpg" alt="Python代码阅读（第13篇）：检测列表中的元素是否都一样" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC13%E7%AF%87_%E6%A3%80%E6%B5%8B%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E9%83%BD%E4%B8%80%E6%A0%B7/">Python代码阅读（第13篇）：检测列表中的元素是否都一样</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Thursday, Jul 23, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码实现了检测列表中的元素是否都一样的逻辑。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac12%e7%af%87%ef%bc%89_%e5%88%9d%e5%a7%8b%e5%8c%96%e4%ba%8c%e7%bb%b4%e6%95%b0%e7%bb%84-cover.jpg" alt="Python代码阅读（第12篇）：初始化二维数组" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC12%E7%AF%87_%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/">Python代码阅读（第12篇）：初始化二维数组</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Wednesday, Jul 22, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码实现了二维数组的初始化功能，根据给定的宽高初始化二维数组。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      2 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac11%e7%af%87%ef%bc%89_%e5%b1%95%e5%bc%80%e5%b5%8c%e5%a5%97%e5%88%97%e8%a1%a8-cover.jpg" alt="Python代码阅读（第11篇）：展开嵌套列表" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC11%E7%AF%87_%E5%B1%95%E5%BC%80%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8/">Python代码阅读（第11篇）：展开嵌套列表</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Tuesday, Jul 21, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码实现了展开嵌套列表的功能，将一个嵌套的list展开成一个一维list（不改变原有列表的顺序）。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac10%e7%af%87%ef%bc%89_%e9%9a%8f%e6%9c%ba%e6%89%93%e4%b9%b1%e5%88%97%e8%a1%a8%e5%85%83%e7%b4%a0-cover.jpg" alt="Python代码阅读（第10篇）：随机打乱列表元素" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC10%E7%AF%87_%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0/">Python代码阅读（第10篇）：随机打乱列表元素</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Wednesday, Jul 1, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码实现了随机打乱列表元素的功能，将原有列表乱序排列，并返回一个新的列表（不改变原有列表的顺序）。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      2 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac9%e7%af%87%ef%bc%89_%e8%bf%94%e5%9b%9e%e6%9c%80%e9%95%bf%e7%9a%84%e8%be%93%e5%85%a5%e5%af%b9%e8%b1%a1-cover.jpg" alt="Python代码阅读（第9篇）：返回最长的输入对象" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC9%E7%AF%87_%E8%BF%94%E5%9B%9E%E6%9C%80%E9%95%BF%E7%9A%84%E8%BE%93%E5%85%A5%E5%AF%B9%E8%B1%A1/">Python代码阅读（第9篇）：返回最长的输入对象</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Tuesday, Jun 30, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的代码的功能是返回最长输入对象。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac8%e7%af%87%ef%bc%89_%e5%88%97%e8%a1%a8%e5%85%83%e7%b4%a0%e9%80%bb%e8%be%91%e5%88%a4%e6%96%ad-cover.jpg" alt="Python代码阅读（第8篇）：列表元素逻辑判断" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC8%E7%AF%87_%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/">Python代码阅读（第8篇）：列表元素逻辑判断</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Monday, Jun 29, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本篇阅读的三份代码的功能分别是判断列表中的元素是否都符合给定的条件；判断列表中是否存在符合给定的条件的元素；以及判断列表中的元素是否都不符合给定的条件。
-本篇阅读的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      2 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb%ef%bc%88%e7%ac%ac7%e7%af%87%ef%bc%89_%e5%88%97%e8%a1%a8%e5%88%86%e7%bb%84%e8%ae%a1%e6%95%b0-cover.jpg" alt="Python代码阅读（第7篇）：列表分组计数" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC7%E7%AF%87_%E5%88%97%E8%A1%A8%E5%88%86%E7%BB%84%E8%AE%A1%E6%95%B0/">Python代码阅读（第7篇）：列表分组计数</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Sunday, Jun 28, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本文阅读的代码将根据给定的函数对列表中的元素进行分组，并返回每组中元素的数量。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      2 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
-    
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-    
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/post/Python%e4%bb%a3%e7%a0%81%e9%98%85%e8%af%bb_%e6%a0%b9%e6%8d%ae%e7%bb%99%e5%ae%9a%e7%9a%84%e5%87%bd%e6%95%b0%e5%af%b9%e5%88%97%e8%a1%a8%e4%b8%ad%e7%9a%84%e5%85%83%e7%b4%a0%e8%bf%9b%e8%a1%8c%e5%88%86%e7%bb%84-cover.jpg" alt="Python代码阅读：根据给定的函数对列表中的元素进行分组" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E7%9A%84%E5%87%BD%E6%95%B0%E5%AF%B9%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84/">Python代码阅读：根据给定的函数对列表中的元素进行分组</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Sunday, Jun 28, 2020</p>
-      <p class="author">@ Felix</p>
-    </div>
-    <div class="description">
-      本文中的代码片段来自于30-seconds-of-python。
-
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
 </div>
-
-<div class="ui secondary menu dream-menu dream-paginator">
-  
-  <div class="item">
-    <a href="/page/4/">
-    
-      <i class="large arrow alternate circle left inverted icon link" title="上一页"></i>
-    
-    </a>
-  </div>
-  
-
-  
-  <div class="item">
-    <a href="/page/6/">
-    
-      <i class="large arrow alternate circle right inverted icon link" title="下一页"></i>
-    
-    </a>
-  </div>
-  
-</div>
-
 
         </section>
         <section class="back">
@@ -1001,30 +693,6 @@
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
@@ -1040,7 +708,9 @@
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-     
+    
+<script src="/js/html2canvas.min.js"></script>
+
 
     
       
