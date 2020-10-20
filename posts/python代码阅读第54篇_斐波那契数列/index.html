@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第33篇）：反转字典
+Python代码阅读（第54篇）：斐波那契数列
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第33篇）：反转字典
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本篇阅读的代码实现了将一个字典进行反转，且原字典的值非唯一。
+  <meta name="description" content="本篇阅读的代码生成了一个包含斐波那契序列的列表。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第33篇）：反转字典
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC33%E7%AF%87_%E5%8F%8D%E8%BD%AC%E5%AD%97%E5%85%B8/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC54%E7%AF%87_%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" />
 
 
-<meta property="og:title" content="Python代码阅读（第33篇）：反转字典" />
-<meta property="og:description" content="本篇阅读的代码实现了将一个字典进行反转，且原字典的值非唯一。
+<meta property="og:title" content="Python代码阅读（第54篇）：斐波那契数列" />
+<meta property="og:description" content="本篇阅读的代码生成了一个包含斐波那契序列的列表。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC33%E7%AF%87_%E5%8F%8D%E8%BD%AC%E5%AD%97%E5%85%B8/" />
-<meta property="article:published_time" content="2020-09-02T17:39:44+08:00" />
-<meta property="article:modified_time" content="2020-09-02T17:39:44+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC54%E7%AF%87_%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" />
+<meta property="article:published_time" content="2020-10-19T14:29:25+08:00" />
+<meta property="article:modified_time" content="2020-10-19T14:29:25+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第33篇）：反转字典"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了将一个字典进行反转，且原字典的值非唯一。
+<meta name="twitter:title" content="Python代码阅读（第54篇）：斐波那契数列"/>
+<meta name="twitter:description" content="本篇阅读的代码生成了一个包含斐波那契序列的列表。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,32 +91,37 @@ Python代码阅读（第33篇）：反转字典
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第33篇）：反转字典
-          <div class="sub header">@ Felix · Wednesday, Sep 2, 2020 · 2 分钟阅读 · 更新于 Sep 2, 2020</div>
+          Python代码阅读（第54篇）：斐波那契数列
+          <div class="sub header">@ Felix · Monday, Oct 19, 2020 · 1 分钟阅读 · 更新于 Oct 19, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了将一个字典进行反转，且原字典的值非唯一。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码生成了一个包含斐波那契序列的列表。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="collect_dictionary"><code>collect_dictionary</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">collect_dictionary</span>(obj):
-  inv_obj <span style="color:#f92672">=</span> {}
-  <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> obj<span style="color:#f92672">.</span>items():
-    inv_obj<span style="color:#f92672">.</span>setdefault(value, list())<span style="color:#f92672">.</span>append(key)
-  <span style="color:#66d9ef">return</span> inv_obj
+<h2 id="fibonacci"><code>fibonacci</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(n):
+  <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+    <span style="color:#66d9ef">return</span> [<span style="color:#ae81ff">0</span>]
+
+  sequence <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]
+  <span style="color:#66d9ef">while</span> len(sequence) <span style="color:#f92672">&lt;=</span> n:
+    next_value <span style="color:#f92672">=</span> sequence[len(sequence) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> sequence[len(sequence) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>]
+    sequence<span style="color:#f92672">.</span>append(next_value)
+
+  <span style="color:#66d9ef">return</span> sequence
 
 <span style="color:#75715e"># EXAMPLES</span>
-ages <span style="color:#f92672">=</span> {
-  <span style="color:#e6db74">&#34;Peter&#34;</span>: <span style="color:#ae81ff">10</span>,
-  <span style="color:#e6db74">&#34;Isabel&#34;</span>: <span style="color:#ae81ff">10</span>,
-  <span style="color:#e6db74">&#34;Anna&#34;</span>: <span style="color:#ae81ff">9</span>,
-}
-collect_dictionary(ages) <span style="color:#75715e"># { 10: [&#34;Peter&#34;, &#34;Isabel&#34;], 9: [&#34;Anna&#34;] }</span>
-</code></pre></div><p><code>collect_dictionary</code>函数接收一个字典，返回反转后的字典。函数使用<code>dictionary.items()</code>循环获取每一个原字典的键值对，使用<code>dictionary.setdefault()</code>和<code>append()</code>将原字典的值映射到键上。使用<code>list()</code>将新键的值定义为列表。</p>
-<p>因为原字典的所有值不唯一，反转字典之后，新的键也可能对应多个值。因此反转后的字典的值是一个列表，每个列表中的元素是原字典的一个或多个键。</p>
-<p><code>dictionary. setdefault(key[, default])</code>如果字典存在键<code>key</code>，返回它的值。如果不存在，插入值为<code>default</code>的键<code>key</code>，并返回<code>default</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> obj<span style="color:#f92672">.</span>items():
-    inv_obj<span style="color:#f92672">.</span>setdefault(value, list())<span style="color:#f92672">.</span>append(key)
-</code></pre></div><p>如果新的字典<code>inv_obj</code>已经有<code>key == value</code>，就会返回这个<code>key</code>对应的值（一个列表），然后使用<code>append</code>将原字典的键加入其中。如果新的字典<code>inv_obj</code>没有<code>key == value</code>，就会插入这个<code>key</code>，设置它的值为<code>list()</code>，并返回这个空列表。然后使用<code>append</code>将原字典的键加入其中。</p></article>
+fibonacci(<span style="color:#ae81ff">7</span>) <span style="color:#75715e"># [0, 1, 1, 2, 3, 5, 8, 13]</span>
+</code></pre></div><p><code>fibonacci</code>函数接收指定的斐波那契数列的项数<code>n</code>，返回生成的斐波那契数列。</p>
+<p>函数使用数列公式和<code>append()</code>来生成数列。</p>
+<p><img src="/post/Python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%EF%BC%88%E7%AC%AC54%E7%AF%87%EF%BC%89_%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97-1.jpg" alt=""></p>
+<p>需要注意的是斐波那契数列开始项是第<code>0</code>项。斐波那契数列公式满足以下逻辑</p>
+<ol>
+<li>当<code>n</code>等于<code>0</code>时，函数返回斐波那契数列的第<code>0</code>项，<code>[0]</code>。</li>
+<li>当<code>n</code>等于<code>1</code>时，函数返回返回数列的第<code>0</code>项和第<code>1</code>项，<code>[0,1]</code>。</li>
+<li>当<code>n</code>大于等于<code>2</code>时，斐波那契数列的第<code>n</code>项是由<code>n-1</code>和<code>n-2</code>项相加计算得来的。</li>
+</ol>
+<p>根据函数中<code>if</code> 和<code>while</code>中的判断逻辑，函数特别定义，<code>n</code>小于<code>0</code>的时候，函数返回<code>[0]</code>。 <code>n</code>大于等于<code>2</code>的时候，函数迭代的进行斐波那契数列的计算，每次将新计算得到的项添加到数列的末尾。直到数列的计算到第<code>n</code>项。</p>
+<p>形式<code>s.append(x)</code>会将<code>x</code>添加到序列的末尾 ，等同于<code>s[len(s):len(s)] = [x])</code>。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -143,8 +148,8 @@ collect_dictionary(ages) <span style="color:#75715e"># { 10: [&#34;Peter&#34;, &
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC33%E7%AF%87_%E5%8F%8D%E8%BD%AC%E5%AD%97%E5%85%B8\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC33%E7%AF%87_%E5%8F%8D%E8%BD%AC%E5%AD%97%E5%85%B8\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC54%E7%AF%87_%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC54%E7%AF%87_%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97\/'; 
           };
 
           (function() { 
