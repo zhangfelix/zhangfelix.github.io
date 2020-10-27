@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第46篇）：寻找符合条件的元素
+Python代码阅读（第59篇）：根据value查询字典key值
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第46篇）：寻找符合条件的元素
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本篇阅读的代码实现了在列表中寻找符合条件的元素。
+  <meta name="description" content="本篇阅读的代码实现了根据value查询字典key的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第46篇）：寻找符合条件的元素
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC59%E7%AF%87_%E6%A0%B9%E6%8D%AEvalue%E6%9F%A5%E8%AF%A2%E5%AD%97%E5%85%B8key%E5%80%BC/" />
 
 
-<meta property="og:title" content="Python代码阅读（第46篇）：寻找符合条件的元素" />
-<meta property="og:description" content="本篇阅读的代码实现了在列表中寻找符合条件的元素。
+<meta property="og:title" content="Python代码阅读（第59篇）：根据value查询字典key值" />
+<meta property="og:description" content="本篇阅读的代码实现了根据value查询字典key的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0/" />
-<meta property="article:published_time" content="2020-09-28T12:30:42+08:00" />
-<meta property="article:modified_time" content="2020-09-28T12:30:42+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC59%E7%AF%87_%E6%A0%B9%E6%8D%AEvalue%E6%9F%A5%E8%AF%A2%E5%AD%97%E5%85%B8key%E5%80%BC/" />
+<meta property="article:published_time" content="2020-10-26T18:30:22+08:00" />
+<meta property="article:modified_time" content="2020-10-26T18:30:22+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第46篇）：寻找符合条件的元素"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了在列表中寻找符合条件的元素。
+<meta name="twitter:title" content="Python代码阅读（第59篇）：根据value查询字典key值"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了根据value查询字典key的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,32 +91,39 @@ Python代码阅读（第46篇）：寻找符合条件的元素
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第46篇）：寻找符合条件的元素
-          <div class="sub header">@ Felix · Monday, Sep 28, 2020 · 1 分钟阅读 · 更新于 Sep 28, 2020</div>
+          Python代码阅读（第59篇）：根据value查询字典key值
+          <div class="sub header">@ Felix · Monday, Oct 26, 2020 · 1 分钟阅读 · 更新于 Oct 26, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了在列表中寻找符合条件的元素。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了根据<code>value</code>查询字典<code>key</code>的功能。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="find"><code>find</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find</span>(lst, fn):
-  <span style="color:#66d9ef">return</span> next(x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> lst <span style="color:#66d9ef">if</span> fn(x))
+<h2 id="find_keys"><code>find_keys</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_keys</span>(dict, val):
+  <span style="color:#66d9ef">return</span> list(key <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> dict<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> value <span style="color:#f92672">==</span> val)
 
 <span style="color:#75715e"># EXAMPLES</span>
-find([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], <span style="color:#66d9ef">lambda</span> n: n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 1</span>
-</code></pre></div><p><code>find</code>函数接收一个列表和一个判别函数，返回第一个使判别函数为真的元素。</p>
-<p>函数使用列表推导式和<code>next()</code>来返回<code>lst</code>中第一个 是判别函数<code>fn</code>的返回为<code>True</code>的元素。</p>
-<p><code>next(iterator[, default])</code>获取迭代器的下一个元素。如果迭代器耗尽，则返回给定的 default，如果没有默认值则触发 <code>StopIteration</code></p>
-<h2 id="find_last"><code>find_last</code></h2>
-<p>类似的，可以实现<code>find_last</code>函数，使用<code>lst[::-1]</code>切片形式，将列表倒序。然后使用相同的方法获取使判别函数<code>fn</code>为<code>True</code>的元素。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_last</span>(lst, fn):
-  <span style="color:#66d9ef">return</span> next(x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> lst[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">if</span> fn(x))
+ages <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Peter&#34;</span>: <span style="color:#ae81ff">10</span>,
+  <span style="color:#e6db74">&#34;Isabel&#34;</span>: <span style="color:#ae81ff">11</span>,
+  <span style="color:#e6db74">&#34;Anna&#34;</span>: <span style="color:#ae81ff">10</span>,
+}
+find_keys(ages, <span style="color:#ae81ff">10</span>) <span style="color:#75715e"># [ &#34;Peter&#34;, &#34;Anna&#34; ]</span>
+</code></pre></div><p><code>find_keys</code>函数接收一个字典和一个<code>val</code>值，返回一个键值列表。</p>
+<p>函数在生成器表达式中，使用<code>items()</code>获取字典的<code>k-v</code>值对，当<code>value</code>值和输入相等时，获取<code>key</code>的值。最后再用<code>list()</code>将生成器转化成一个列表。</p>
+<h2 id="find_key"><code>find_key</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_key</span>(dict, val):
+  <span style="color:#66d9ef">return</span> next(key <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> dict<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> value <span style="color:#f92672">==</span> val)
 
 <span style="color:#75715e"># EXAMPLES</span>
-find_last([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], <span style="color:#66d9ef">lambda</span> n: n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># 3</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> lst <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]
-<span style="color:#f92672">&gt;&gt;&gt;</span> lst[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-[<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]
-</code></pre></div></article>
+ages <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Peter&#34;</span>: <span style="color:#ae81ff">10</span>,
+  <span style="color:#e6db74">&#34;Isabel&#34;</span>: <span style="color:#ae81ff">11</span>,
+  <span style="color:#e6db74">&#34;Anna&#34;</span>: <span style="color:#ae81ff">9</span>,
+}
+find_key(ages, <span style="color:#ae81ff">11</span>) <span style="color:#75715e"># &#34;Isabel&#34;</span>
+</code></pre></div><p><code>find_key</code>函数接收一个字典和一个<code>val</code>值，返回第一个<code>value</code>值相同的<code>key</code>值。</p>
+<p>和<code>find_keys</code>类似，使用生成器表达式获取指定<code>value</code>的键值。不同的是，生成器外面使用<code>next()</code>函数获取生成器的下一个取值。在本函数中<code>next()</code>只调用一次，因此会获取第一符合要求的<code>key</code>值。</p>
+<p><code>next(iterator[, default])</code>函数通过调用<code>iterator</code>的 <code>__next__()</code>方法获取下一个元素。如果迭代器耗尽，则返回给定的<code>default</code>，如果没有默认值则触发<code>StopIteration</code>。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -143,8 +150,8 @@ find_last([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC46%E7%AF%87_%E5%AF%BB%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC59%E7%AF%87_%E6%A0%B9%E6%8D%AEvalue%E6%9F%A5%E8%AF%A2%E5%AD%97%E5%85%B8key%E5%80%BC\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC59%E7%AF%87_%E6%A0%B9%E6%8D%AEvalue%E6%9F%A5%E8%AF%A2%E5%AD%97%E5%85%B8key%E5%80%BC\/'; 
           };
 
           (function() { 
