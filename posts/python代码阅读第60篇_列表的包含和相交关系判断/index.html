@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-
-
-
-
-
+Python代码阅读（第60篇）：列表的包含和相交关系判断
  | 独白</title>
 
     
@@ -18,27 +14,32 @@
 
 
   
-  <meta name="author" content="Nan" />
-  <meta name="description" content="我的声音" />
+  <meta name="author" content="Felix" />
+  <meta name="description" content="本篇阅读的代码分别实现了判断给出的列表是否被指定列表包含，以及给出的列表是否与指定列表有交集的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。
+" />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/about/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%92%8C%E7%9B%B8%E4%BA%A4%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/" />
 
 
-<meta property="og:title" content="Abouts" />
-<meta property="og:description" content="我的声音" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.zhangfelix.com/about/" />
-<meta property="og:updated_time" content="2020-06-13T19:46:36+08:00" />
+<meta property="og:title" content="Python代码阅读（第60篇）：列表的包含和相交关系判断" />
+<meta property="og:description" content="本篇阅读的代码分别实现了判断给出的列表是否被指定列表包含，以及给出的列表是否与指定列表有交集的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%92%8C%E7%9B%B8%E4%BA%A4%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/" />
+<meta property="article:published_time" content="2020-10-27T18:35:35+08:00" />
+<meta property="article:modified_time" content="2020-10-27T18:35:35+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Abouts"/>
-<meta name="twitter:description" content="我的声音"/>
+<meta name="twitter:title" content="Python代码阅读（第60篇）：列表的包含和相交关系判断"/>
+<meta name="twitter:description" content="本篇阅读的代码分别实现了判断给出的列表是否被指定列表包含，以及给出的列表是否与指定列表有交集的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -85,7 +86,90 @@
 
           
 <div class="ui centered relaxed grid dream-grid">
-  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single">
+
+    <section class="ui top attached segment" id="dream-save-post-as-img">
+      <header style="margin-top: 0 !important;">
+        <h2 class="ui header">
+          Python代码阅读（第60篇）：列表的包含和相交关系判断
+          <div class="sub header">@ Felix · Tuesday, Oct 27, 2020 · 2 分钟阅读 · 更新于 Oct 27, 2020</div>
+        </h2>
+      </header>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码分别实现了判断给出的列表是否被指定列表包含，以及给出的列表是否与指定列表有交集的功能。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="includes_all"><code>includes_all</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">includes_all</span>(lst, values):
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> values:
+    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> lst:
+      <span style="color:#66d9ef">return</span> False
+  <span style="color:#66d9ef">return</span> True
+
+<span style="color:#75715e"># EXAMPLES</span>
+includes_all([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>]) <span style="color:#75715e"># True</span>
+includes_all([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>]) <span style="color:#75715e"># False</span>
+</code></pre></div><p><code>includes_all</code>函数接收两个列表<code>lst</code>和<code>values</code>，如果<code>values</code>中的所有元素都包含在<code>lst</code>中，则返回<code>True</code>，否则返回<code>False</code>。</p>
+<p>函数用<code>for</code> 循环遍历<code>values</code>中的元素，用<code>not in</code>关键词判断该元素是否在<code>lst</code>中存在。如果<code>values</code>中的任意一个元素在<code>lst</code>中不存在，就返回<code>False</code>，只有<code>values</code>中的所有元素在<code>lst</code>中存在，才返回<code>True</code>。</p>
+<p><code>x not in s</code>这种形式的写法中，如果列表<code>s</code>中的某项等于<code>x</code>则结果为<code>False</code>，否则为<code>True</code>。</p>
+<h2 id="includes_any"><code>includes_any</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">includes_any</span>(lst, values):
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> values:
+    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> lst:
+      <span style="color:#66d9ef">return</span> True
+  <span style="color:#66d9ef">return</span> False
+
+<span style="color:#75715e"># EXAMPLES</span>
+includes_any([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>]) <span style="color:#75715e"># True</span>
+includes_any([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]) <span style="color:#75715e"># False</span>
+</code></pre></div><p><code>includes_any</code>函数类似，也是接收两个列表<code>lst</code>和<code>values</code>，如果<code>values</code>中的任意元素被包含在<code>lst</code>中，返回<code>True</code>，否则返回<code>False</code>。</p>
+<p>在该函数的<code>for</code>循环中，使用<code>in</code>关键词判断元素是在<code>lst</code>中存在。</p>
+<p><code>x in s</code>这种形式的写法中，如果列表<code>s</code>中的某项等于<code>x</code>则结果为<code>True</code>，否则为<code>False</code>。</p>
+<p>虽然<code>in</code>和<code>not in</code>操作在通常情况下仅被用于简单的成员检测，某些专门化序列 (例如<code>str</code>,<code>bytes</code>和<code>bytearray</code>) 也使用它们进行子序列检测:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#34;cd&#34;</span> <span style="color:#f92672">in</span> <span style="color:#e6db74">&#34;abcdef&#34;</span>
+True
+</code></pre></div></article>
+    </section>
+
+    <footer class="ui attached segment dream-tags">
+      
+        
+          <a class="ui label" href="/tags/python" title="Python">Python</a>
+        
+      
+      <div
+        class="ui label"
+        style="float: right; cursor: pointer;"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>保存为图片
+      </div>
+    </footer>
+
+    
+
+    
+      <footer class="ui bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
+        <div id="disqus_thread"></div>
+        <script>
+          
+
+
+          var disqus_config = function () {
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%92%8C%E7%9B%B8%E4%BA%A4%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%92%8C%E7%9B%B8%E4%BA%A4%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD\/'; 
+          };
+
+          (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </footer>
+    
+
+  </div>
+  <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
     <article class="dream-header">
   <section class="ui top attached center aligned segment">
     <div class="ui small circular image">
@@ -557,51 +641,7 @@
 </article>
 
   </div>
-
-  
-  
-    <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
-      
-<article class="ui raised card dream-card" style="box-shadow: none;">
-
-  <div class="image">
-    
-      <img src="/img/default3.jpg" alt="Desc" />
-    
-  </div>
-
-  <div class="content">
-    <h2 class="ui medium header">
-      <a href="https://www.zhangfelix.com/about/desc/">Desc</a>
-    </h2>
-    <div class="meta">
-      <p class="date">Saturday, Jun 13, 2020</p>
-      <p class="author">@ Nan</p>
-    </div>
-    <div class="description">
-      Hi, my name is Zhang nan.
-This is my blog.
-    </div>
-  </div>
-
-  <div class="extra content">
-    <a>
-      <i class="clock icon"></i>
-      1 分钟阅读
-    </a>
-  </div>
-</article>
-
-    </div>
-  
 </div>
-
-<div class="ui secondary menu dream-menu dream-paginator">
-  
-
-  
-</div>
-
 
         </section>
         <section class="back">
@@ -687,30 +727,6 @@ This is my blog.
 
   
   
-    <section class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
-      <footer class="ui segment">
-        <div id="disqus_thread"></div>
-        <script>
-          
-
-
-          var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/about\/about';  
-            this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + 'zhangfelix-blog' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </footer>
-    </section>
-  
-
 </div>
 
         </section>
@@ -726,7 +742,9 @@ This is my blog.
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
 
-     
+    
+<script src="/js/html2canvas.min.js"></script>
+
 
     
       
