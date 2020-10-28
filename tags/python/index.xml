@@ -6,10 +6,20 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Oct 2020 18:35:35 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2020 18:35:30 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第61篇）：延迟调用函数</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC61%E7%AF%87_%E5%BB%B6%E8%BF%9F%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 28 Oct 2020 18:35:30 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC61%E7%AF%87_%E5%BB%B6%E8%BF%9F%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了在给定的延迟时间后，调用指定函数的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第60篇）：列表的包含和相交关系判断</title>
