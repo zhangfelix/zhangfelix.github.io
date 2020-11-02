@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读：根据过滤器拆分列表
+Python代码阅读（第64篇）：角度与弧度互转
  | 独白</title>
 
     
@@ -15,28 +15,31 @@ Python代码阅读：根据过滤器拆分列表
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本文中的代码片段来自于30-seconds-of-python。
+  <meta name="description" content="本篇阅读的代码实现了将弧度转为角度，以及将角度转为弧度的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
 
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC64%E7%AF%87_%E8%A7%92%E5%BA%A6%E4%B8%8E%E5%BC%A7%E5%BA%A6%E4%BA%92%E8%BD%AC/" />
 
 
-<meta property="og:title" content="Python代码阅读：根据过滤器拆分列表" />
-<meta property="og:description" content="本文中的代码片段来自于30-seconds-of-python。" />
+<meta property="og:title" content="Python代码阅读（第64篇）：角度与弧度互转" />
+<meta property="og:description" content="本篇阅读的代码实现了将弧度转为角度，以及将角度转为弧度的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8/" />
-<meta property="article:published_time" content="2020-06-23T21:45:19+08:00" />
-<meta property="article:modified_time" content="2020-06-23T21:45:19+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC64%E7%AF%87_%E8%A7%92%E5%BA%A6%E4%B8%8E%E5%BC%A7%E5%BA%A6%E4%BA%92%E8%BD%AC/" />
+<meta property="article:published_time" content="2020-11-02T18:35:42+08:00" />
+<meta property="article:modified_time" content="2020-11-02T18:35:42+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读：根据过滤器拆分列表"/>
-<meta name="twitter:description" content="本文中的代码片段来自于30-seconds-of-python。"/>
+<meta name="twitter:title" content="Python代码阅读（第64篇）：角度与弧度互转"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了将弧度转为角度，以及将角度转为弧度的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -88,38 +91,33 @@ Python代码阅读：根据过滤器拆分列表
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读：根据过滤器拆分列表
-          <div class="sub header">@ Felix · Tuesday, Jun 23, 2020 · 1 分钟阅读 · 更新于 Jun 23, 2020</div>
+          Python代码阅读（第64篇）：角度与弧度互转
+          <div class="sub header">@ Felix · Monday, Nov 2, 2020 · 1 分钟阅读 · 更新于 Nov 2, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本文中的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="bifurcate"><code>bifurcate</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bifurcate</span>(lst, filter):
-  <span style="color:#66d9ef">return</span> [
-    [x <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(lst) <span style="color:#66d9ef">if</span> filter[i] <span style="color:#f92672">==</span> True],
-    [x <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(lst) <span style="color:#66d9ef">if</span> filter[i] <span style="color:#f92672">==</span> False]
-  ]
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了将弧度转为角度，以及将角度转为弧度的功能。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="rads_to_degrees"><code>rads_to_degrees</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> pi
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rads_to_degrees</span>(rad):
+  <span style="color:#66d9ef">return</span> (rad <span style="color:#f92672">*</span> <span style="color:#ae81ff">180.0</span>) <span style="color:#f92672">/</span> pi
 
 <span style="color:#75715e"># EXAMPLES</span>
-bifurcate([<span style="color:#e6db74">&#39;beep&#39;</span>, <span style="color:#e6db74">&#39;boop&#39;</span>, <span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#e6db74">&#39;bar&#39;</span>], [True, True, False, True]) <span style="color:#75715e"># [ [&#39;beep&#39;, &#39;boop&#39;, &#39;bar&#39;], [&#39;foo&#39;] ]</span>
-</code></pre></div><p><code>bifurcate</code>函数通过一个过滤器<code>filter</code>定义的内容，将输入列表<code>lst</code>分成两组。将<code>filter</code>中为<code>True</code>的对应的<code>lst</code>的项放入结果的第一个列表中，将<code>filter</code>中为<code>False</code>的对应的<code>lst</code>的项放入结果的第二个列表中。</p>
-<h2 id="enumerate"><code>enumerate</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">enumerate(iterable, start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-</code></pre></div><p><code>enumerate</code>函数接收一个可迭代对象，并返回一个迭代对象。该迭代对象每次迭代返回一个元组，该元组包括一个序号和接收的可迭代对象的迭代值。<code>start</code>参数用于设定序号的初始值，默认为<code>0</code>。示例使用为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> seasons <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Spring&#39;</span>, <span style="color:#e6db74">&#39;Summer&#39;</span>, <span style="color:#e6db74">&#39;Fall&#39;</span>, <span style="color:#e6db74">&#39;Winter&#39;</span>]
-<span style="color:#f92672">&gt;&gt;&gt;</span> list(enumerate(seasons))
-[(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;Spring&#39;</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;Summer&#39;</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;Fall&#39;</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;Winter&#39;</span>)]
-<span style="color:#f92672">&gt;&gt;&gt;</span> list(enumerate(seasons, start<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
-[(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;Spring&#39;</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;Summer&#39;</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;Fall&#39;</span>), (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;Winter&#39;</span>)]
-</code></pre></div><p><code>enumerate</code>函数的实现逻辑相当于如下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">enumerate</span>(sequence, start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
-    n <span style="color:#f92672">=</span> start
-    <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> sequence:
-        <span style="color:#66d9ef">yield</span> n, elem
-        n <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</code></pre></div><h2 id="列表推导式">列表推导式</h2>
-<p>该函数使用列表推导式判断<code>lst</code>里面值对应位置的<code>filter</code>的值，并生成对应的分组列表。</p>
-<p>列表推导式的简单介绍可以查看<a href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E8%BF%87%E6%BB%A4%E6%8E%89%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%80%BC/">Python代码阅读：过滤掉列表中的唯一值</a>中的“列表推导式”章节。</p></article>
+rads_to_degrees(pi <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># 90.0</span>
+</code></pre></div><p><code>rads_to_degrees</code>函数接收一个弧度，返回该弧度的角度形式。</p>
+<p>弧度是平面角的单位。单位弧度定义为圆弧长度等于半径时的圆心角。所以弧度和角度的关系满足如下公式。其中<code>deg</code>是角度，<code>rad</code>是弧度。</p>
+<p><img src="/post/Python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%EF%BC%88%E7%AC%AC64%E7%AF%87%EF%BC%89_%E8%A7%92%E5%BA%A6%E4%B8%8E%E5%BC%A7%E5%BA%A6%E4%BA%92%E8%BD%AC-1.png" alt=""></p>
+<p><code>math</code>模块提供了对C标准定义的数学函数的访问。该模块不适用于复数，如果想要使用复数计算，可以使用<code>cmath</code>模块中的同名函数。<code>math.pi</code>是数学常数<code>π = 3.141592...</code>，精确到可用精度。</p>
+<h2 id="degrees_to_rads"><code>degrees_to_rads</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> pi
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">degrees_to_rads</span>(deg):
+  <span style="color:#66d9ef">return</span> (deg <span style="color:#f92672">*</span> pi) <span style="color:#f92672">/</span> <span style="color:#ae81ff">180.0</span>
+
+<span style="color:#75715e"># EXAMPLES</span>
+degrees_to_rads(<span style="color:#ae81ff">180</span>) <span style="color:#75715e"># 3.141592653589793</span>
+</code></pre></div><p><code>degrees_to_rads</code>函数和上面的相反，接收一个角度，返回其对应的弧度。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -146,8 +144,8 @@ bifurcate([<span style="color:#e6db74">&#39;beep&#39;</span>, <span style="color
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB_%E6%A0%B9%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E6%8B%86%E5%88%86%E5%88%97%E8%A1%A8\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC64%E7%AF%87_%E8%A7%92%E5%BA%A6%E4%B8%8E%E5%BC%A7%E5%BA%A6%E4%BA%92%E8%BD%AC\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC64%E7%AF%87_%E8%A7%92%E5%BA%A6%E4%B8%8E%E5%BC%A7%E5%BA%A6%E4%BA%92%E8%BD%AC\/'; 
           };
 
           (function() { 
