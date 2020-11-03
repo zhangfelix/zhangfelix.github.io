@@ -6,10 +6,20 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 02 Nov 2020 18:35:42 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2020 12:30:06 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第65篇）：根据条件应用指定函数</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC65%E7%AF%87_%E6%A0%B9%E6%8D%AE%E6%9D%A1%E4%BB%B6%E5%BA%94%E7%94%A8%E6%8C%87%E5%AE%9A%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Tue, 03 Nov 2020 12:30:06 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC65%E7%AF%87_%E6%A0%B9%E6%8D%AE%E6%9D%A1%E4%BB%B6%E5%BA%94%E7%94%A8%E6%8C%87%E5%AE%9A%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;本篇阅读的代码可以构造一个函数，在其入参满足条件函数的情况下，对其应用指定函数。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第64篇）：角度与弧度互转</title>
