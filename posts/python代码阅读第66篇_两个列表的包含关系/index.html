@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第37篇）：获取两个列表中相同的元素
+Python代码阅读（第66篇）：两个列表的包含关系
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第37篇）：获取两个列表中相同的元素
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。
+  <meta name="description" content="本篇阅读的代码实现了判断一个列表是否被另一个列表包含的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第37篇）：获取两个列表中相同的元素
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC66%E7%AF%87_%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%85%B3%E7%B3%BB/" />
 
 
-<meta property="og:title" content="Python代码阅读（第37篇）：获取两个列表中相同的元素" />
-<meta property="og:description" content="本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。
+<meta property="og:title" content="Python代码阅读（第66篇）：两个列表的包含关系" />
+<meta property="og:description" content="本篇阅读的代码实现了判断一个列表是否被另一个列表包含的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0/" />
-<meta property="article:published_time" content="2020-09-10T12:54:58+08:00" />
-<meta property="article:modified_time" content="2020-09-10T12:54:58+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC66%E7%AF%87_%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%85%B3%E7%B3%BB/" />
+<meta property="article:published_time" content="2020-11-04T12:30:26+08:00" />
+<meta property="article:modified_time" content="2020-11-04T12:30:26+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第37篇）：获取两个列表中相同的元素"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。
+<meta name="twitter:title" content="Python代码阅读（第66篇）：两个列表的包含关系"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了判断一个列表是否被另一个列表包含的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,20 +91,23 @@ Python代码阅读（第37篇）：获取两个列表中相同的元素
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第37篇）：获取两个列表中相同的元素
-          <div class="sub header">@ Felix · Thursday, Sep 10, 2020 · 1 分钟阅读 · 更新于 Sep 10, 2020</div>
+          Python代码阅读（第66篇）：两个列表的包含关系
+          <div class="sub header">@ Felix · Wednesday, Nov 4, 2020 · 1 分钟阅读 · 更新于 Nov 4, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了判断一个列表是否被另一个列表包含的功能。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="similarity"><code>similarity</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">similarity</span>(a, b):
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> item <span style="color:#f92672">in</span> b]
+<h2 id="is_contained_in"><code>is_contained_in</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_contained_in</span>(a, b):
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> set(a):
+    <span style="color:#66d9ef">if</span> a<span style="color:#f92672">.</span>count(v) <span style="color:#f92672">&gt;</span> b<span style="color:#f92672">.</span>count(v):
+      <span style="color:#66d9ef">return</span> False
+  <span style="color:#66d9ef">return</span> True
 
 <span style="color:#75715e"># EXAMPLES</span>
-similarity([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]) <span style="color:#75715e"># [1, 2]</span>
-</code></pre></div><p><code>similarity</code>函数接收两个列表，返回由两个列表中的相同元素组成的列表。</p>
-<p>函数使用列表推导式，遍历所有<code>a</code>列表中的元素，使用<code>in</code>关键词判断这些元素是否在<code>b</code>列表中存在。</p></article>
+is_contained_in([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>]) <span style="color:#75715e"># True</span>
+</code></pre></div><p><code>is_contained_in</code>函数接收两个列表，返回列表<code>a</code>中的元素是否包含在列表<code>b</code>中。函数统计列表<code>a</code>中各个元素的数量是否都小于等于该元素在列表<code>b</code>中的数量。如果发现任一一个元素在列表<code>b</code>中不存在，或者数量少于其在列表<code>a</code>中的数量，函数返回<code>False</code>。</p>
+<p>和之前《Python代码阅读（第60篇）：列表是否包括指定的元素》不同，<code>is_contained_in</code>函数对元素的数量作出要求，不是判断元素是否在另一个列表中出现，而是判断两个列表之间的包含关系。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -131,8 +134,8 @@ similarity([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2<
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC66%E7%AF%87_%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%85%B3%E7%B3%BB\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC66%E7%AF%87_%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%85%E5%90%AB%E5%85%B3%E7%B3%BB\/'; 
           };
 
           (function() { 

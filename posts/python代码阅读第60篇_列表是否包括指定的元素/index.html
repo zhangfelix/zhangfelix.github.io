@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第37篇）：获取两个列表中相同的元素
+Python代码阅读（第60篇）：列表是否包括指定的元素
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第37篇）：获取两个列表中相同的元素
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。
+  <meta name="description" content="本篇阅读的代码分别实现了判断给出的元素是否都在指定的列表中出现过，以及判断任一给出的元素是否在指定的列表中出现过。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第37篇）：获取两个列表中相同的元素
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E6%98%AF%E5%90%A6%E5%8C%85%E6%8B%AC%E6%8C%87%E5%AE%9A%E7%9A%84%E5%85%83%E7%B4%A0/" />
 
 
-<meta property="og:title" content="Python代码阅读（第37篇）：获取两个列表中相同的元素" />
-<meta property="og:description" content="本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。
+<meta property="og:title" content="Python代码阅读（第60篇）：列表是否包括指定的元素" />
+<meta property="og:description" content="本篇阅读的代码分别实现了判断给出的元素是否都在指定的列表中出现过，以及判断任一给出的元素是否在指定的列表中出现过。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0/" />
-<meta property="article:published_time" content="2020-09-10T12:54:58+08:00" />
-<meta property="article:modified_time" content="2020-09-10T12:54:58+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E6%98%AF%E5%90%A6%E5%8C%85%E6%8B%AC%E6%8C%87%E5%AE%9A%E7%9A%84%E5%85%83%E7%B4%A0/" />
+<meta property="article:published_time" content="2020-10-27T12:29:35+08:00" />
+<meta property="article:modified_time" content="2020-10-27T12:29:35+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第37篇）：获取两个列表中相同的元素"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。
+<meta name="twitter:title" content="Python代码阅读（第60篇）：列表是否包括指定的元素"/>
+<meta name="twitter:description" content="本篇阅读的代码分别实现了判断给出的元素是否都在指定的列表中出现过，以及判断任一给出的元素是否在指定的列表中出现过。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,20 +91,42 @@ Python代码阅读（第37篇）：获取两个列表中相同的元素
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第37篇）：获取两个列表中相同的元素
-          <div class="sub header">@ Felix · Thursday, Sep 10, 2020 · 1 分钟阅读 · 更新于 Sep 10, 2020</div>
+          Python代码阅读（第60篇）：列表是否包括指定的元素
+          <div class="sub header">@ Felix · Tuesday, Oct 27, 2020 · 2 分钟阅读 · 更新于 Oct 27, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了返回两个列表中相同元素的列表的功能。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码分别实现了判断给出的元素是否都在指定的列表中出现过，以及判断任一给出的元素是否在指定的列表中出现过。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="similarity"><code>similarity</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">similarity</span>(a, b):
-  <span style="color:#66d9ef">return</span> [item <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> a <span style="color:#66d9ef">if</span> item <span style="color:#f92672">in</span> b]
+<h2 id="includes_all"><code>includes_all</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">includes_all</span>(lst, values):
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> values:
+    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> lst:
+      <span style="color:#66d9ef">return</span> False
+  <span style="color:#66d9ef">return</span> True
 
 <span style="color:#75715e"># EXAMPLES</span>
-similarity([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]) <span style="color:#75715e"># [1, 2]</span>
-</code></pre></div><p><code>similarity</code>函数接收两个列表，返回由两个列表中的相同元素组成的列表。</p>
-<p>函数使用列表推导式，遍历所有<code>a</code>列表中的元素，使用<code>in</code>关键词判断这些元素是否在<code>b</code>列表中存在。</p></article>
+includes_all([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>]) <span style="color:#75715e"># True</span>
+includes_all([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>]) <span style="color:#75715e"># False</span>
+</code></pre></div><p><code>includes_all</code>函数接收两个列表<code>lst</code>和<code>values</code>，如果<code>values</code>中的所有元素都在<code>lst</code>中出现过，则返回<code>True</code>，否则返回<code>False</code>。并不对元素的出现次数做要求。</p>
+<p>函数用<code>for</code> 循环遍历<code>values</code>中的元素，用<code>not in</code>关键词判断该元素是否在<code>lst</code>中存在。如果<code>values</code>中的任意一个元素在<code>lst</code>中不存在，就返回<code>False</code>，只有<code>values</code>中的所有元素在<code>lst</code>中存在，才返回<code>True</code>。</p>
+<p><code>x not in s</code>这种形式的写法中，如果列表<code>s</code>中的某项等于<code>x</code>则结果为<code>False</code>，否则为<code>True</code>。</p>
+<h2 id="includes_any"><code>includes_any</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">includes_any</span>(lst, values):
+  <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> values:
+    <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> lst:
+      <span style="color:#66d9ef">return</span> True
+  <span style="color:#66d9ef">return</span> False
+
+<span style="color:#75715e"># EXAMPLES</span>
+includes_any([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>]) <span style="color:#75715e"># True</span>
+includes_any([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]) <span style="color:#75715e"># False</span>
+</code></pre></div><p><code>includes_any</code>函数类似，也是接收两个列表<code>lst</code>和<code>values</code>，如果<code>values</code>中的任意元素在<code>lst</code>中出现过，返回<code>True</code>，否则返回<code>False</code>。并不对元素的出现次数做要求。</p>
+<p>在该函数的<code>for</code>循环中，使用<code>in</code>关键词判断元素是在<code>lst</code>中存在。</p>
+<p><code>x in s</code>这种形式的写法中，如果列表<code>s</code>中的某项等于<code>x</code>则结果为<code>True</code>，否则为<code>False</code>。</p>
+<p>虽然<code>in</code>和<code>not in</code>操作在通常情况下仅被用于简单的成员检测，某些专门化序列 (例如<code>str</code>,<code>bytes</code>和<code>bytearray</code>) 也使用它们进行子序列检测:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#34;cd&#34;</span> <span style="color:#f92672">in</span> <span style="color:#e6db74">&#34;abcdef&#34;</span>
+True
+</code></pre></div></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -131,8 +153,8 @@ similarity([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2<
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC37%E7%AF%87_%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9B%B8%E5%90%8C%E7%9A%84%E5%85%83%E7%B4%A0\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E6%98%AF%E5%90%A6%E5%8C%85%E6%8B%AC%E6%8C%87%E5%AE%9A%E7%9A%84%E5%85%83%E7%B4%A0\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC60%E7%AF%87_%E5%88%97%E8%A1%A8%E6%98%AF%E5%90%A6%E5%8C%85%E6%8B%AC%E6%8C%87%E5%AE%9A%E7%9A%84%E5%85%83%E7%B4%A0\/'; 
           };
 
           (function() { 
