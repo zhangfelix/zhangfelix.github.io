@@ -6,10 +6,30 @@
     <description>Recent content in 技术 on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 11 Nov 2020 12:32:28 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2020 12:30:49 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第73篇）：字符串字节数</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC73%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E8%8A%82%E6%95%B0/</link>
+      <pubDate>Thu, 12 Nov 2020 12:30:49 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC73%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E8%8A%82%E6%95%B0/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了计算一个字符串编码后的字节数的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python代码阅读（第72篇）：回文</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC72%E7%AF%87_%E5%9B%9E%E6%96%87/</link>
+      <pubDate>Thu, 12 Nov 2020 12:26:40 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC72%E7%AF%87_%E5%9B%9E%E6%96%87/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了判断一个字符串是否为回文的功能（忽略特殊字符和大小写）。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第71篇）：检测一个平坦列表中是否有重复元素</title>

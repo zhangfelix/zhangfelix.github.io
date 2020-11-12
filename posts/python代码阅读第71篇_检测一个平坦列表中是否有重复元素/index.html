@@ -107,7 +107,17 @@ y <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <s
 has_duplicates(x) <span style="color:#75715e"># True</span>
 has_duplicates(y) <span style="color:#75715e"># False</span>
 </code></pre></div><p><code>has_duplicates</code>函数接收一个列表，返回<code>True</code>，如果该列表中包含重复元素，返回<code>False</code>，如果该列表中不包含重复元素。</p>
-<p>函数使用<code>set(lst)</code>形成不包含重复项的列表元素的集合。计算并比较原列表的长度和集合的长度。如果长度一致，则说明列表中不包含重复元素；不一致，则说明列表中包含重复元素。</p></article>
+<p>函数使用<code>set(lst)</code>形成不包含重复项的列表元素的集合。计算并比较原列表的长度和集合的长度。如果长度一致，则说明列表中不包含重复元素；不一致，则说明列表中包含重复元素。</p>
+<h2 id="all_unique"><code>all_unique</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">all_unique</span>(lst):
+  <span style="color:#66d9ef">return</span> len(lst) <span style="color:#f92672">==</span> len(set(lst))
+
+<span style="color:#75715e"># EXAMPLES</span>
+x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+y <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+all_unique(x) <span style="color:#75715e"># True</span>
+all_unique(y) <span style="color:#75715e"># False</span>
+</code></pre></div><p><code>all_unique</code>和上面函数原理一样。将<code>!=</code>替换成了<code>==</code>，用于判断列表中的元素是否都唯一。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -199,6 +209,18 @@ has_duplicates(y) <span style="color:#75715e"># False</span>
         </div>
         <div class="content">
           <div class="ui list">
+          
+            <div class="item">
+              <div class="content">
+                <a href="/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC73%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E8%8A%82%E6%95%B0/" class="item">Python代码阅读（第73篇）：字符串字节数</a>
+              </div>
+            </div>
+          
+            <div class="item">
+              <div class="content">
+                <a href="/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC72%E7%AF%87_%E5%9B%9E%E6%96%87/" class="item">Python代码阅读（第72篇）：回文</a>
+              </div>
+            </div>
           
             <div class="item">
               <div class="content">
