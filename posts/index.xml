@@ -6,10 +6,20 @@
     <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 20 Nov 2020 12:24:12 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2020 18:35:08 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第79篇）：日期差计算</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC79%E7%AF%87_%E6%97%A5%E6%9C%9F%E5%B7%AE%E8%AE%A1%E7%AE%97/</link>
+      <pubDate>Mon, 23 Nov 2020 18:35:08 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC79%E7%AF%87_%E6%97%A5%E6%9C%9F%E5%B7%AE%E8%AE%A1%E7%AE%97/</guid>
+      <description>&lt;p&gt;本篇阅读的代码在日期类型上实现了日期差的计算（按天作为单位以及按月作为单位）。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第78篇）：获取n天前的日期</title>
@@ -17,7 +27,8 @@
       <pubDate>Fri, 20 Nov 2020 12:24:12 +0800</pubDate>
       
       <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC78%E7%AF%87_%E8%8E%B7%E5%8F%96n%E5%A4%A9%E5%89%8D%E7%9A%84%E6%97%A5%E6%9C%9F/</guid>
-      <description>&lt;p&gt;Cut out summary from your post content here.&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇阅读的代码在日期类型上实现了获取&lt;code&gt;n&lt;/code&gt;天前的日期的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>

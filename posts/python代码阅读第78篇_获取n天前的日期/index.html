@@ -15,7 +15,8 @@ Python代码阅读（第78篇）：获取n天前的日期
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="Cut out summary from your post content here.
+  <meta name="description" content="本篇阅读的代码在日期类型上实现了获取n天前的日期的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
 
@@ -26,7 +27,8 @@ Python代码阅读（第78篇）：获取n天前的日期
 
 
 <meta property="og:title" content="Python代码阅读（第78篇）：获取n天前的日期" />
-<meta property="og:description" content="Cut out summary from your post content here." />
+<meta property="og:description" content="本篇阅读的代码在日期类型上实现了获取n天前的日期的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC78%E7%AF%87_%E8%8E%B7%E5%8F%96n%E5%A4%A9%E5%89%8D%E7%9A%84%E6%97%A5%E6%9C%9F/" />
 <meta property="article:published_time" content="2020-11-20T12:24:12+08:00" />
@@ -36,7 +38,8 @@ Python代码阅读（第78篇）：获取n天前的日期
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python代码阅读（第78篇）：获取n天前的日期"/>
-<meta name="twitter:description" content="Cut out summary from your post content here."/>
+<meta name="twitter:description" content="本篇阅读的代码在日期类型上实现了获取n天前的日期的功能。
+本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
 <link rel="stylesheet" href="/css/github-markdown.css" />
@@ -92,8 +95,19 @@ Python代码阅读（第78篇）：获取n天前的日期
           <div class="sub header">@ Felix · Friday, Nov 20, 2020 · 1 分钟阅读 · 更新于 Nov 20, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>Cut out summary from your post content here.</p>
-<p>The remaining content of your post.</p></article>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码在日期类型上实现了获取<code>n</code>天前的日期的功能。</p>
+<p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
+<h2 id="days_ago"><code>days_ago</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> timedelta, date
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">days_ago</span>(n):
+  <span style="color:#66d9ef">return</span> date<span style="color:#f92672">.</span>today() <span style="color:#f92672">-</span> timedelta(n)
+
+<span style="color:#75715e"># EXAMPLES</span>
+days_ago(<span style="color:#ae81ff">5</span>) <span style="color:#75715e"># date(2020, 10, 23)</span>
+</code></pre></div><p><code>days_ago</code>函数接收一个整数<code>n</code>，返回<code>n</code>天前的日期。</p>
+<p>函数使用<code>date.today()</code>获取几天的日期，再使用<code>date2 = date1 - timedelta</code>运算方式计算<code>n</code>天前的日期。</p>
+<p>具体<code>datetime</code>模块的内容和相关的计算规则可以查看<code>Python</code>的<a href="https://docs.python.org/zh-cn/3/library/datetime.html">官方文档</a>。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -185,6 +199,12 @@ Python代码阅读（第78篇）：获取n天前的日期
         </div>
         <div class="content">
           <div class="ui list">
+          
+            <div class="item">
+              <div class="content">
+                <a href="/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC79%E7%AF%87_%E6%97%A5%E6%9C%9F%E5%B7%AE%E8%AE%A1%E7%AE%97/" class="item">Python代码阅读（第79篇）：日期差计算</a>
+              </div>
+            </div>
           
             <div class="item">
               <div class="content">
