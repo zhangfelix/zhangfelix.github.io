@@ -6,10 +6,30 @@
     <description>Recent content in Posts on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 26 Nov 2020 12:21:49 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Nov 2020 18:35:12 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第83篇）：RGB与HEX相互转换</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC83%E7%AF%87_rgb%E4%B8%8Ehex%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</link>
+      <pubDate>Mon, 30 Nov 2020 18:35:12 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC83%E7%AF%87_rgb%E4%B8%8Ehex%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了将&lt;code&gt;RGB&lt;/code&gt;色彩格式与&lt;code&gt;HEX&lt;/code&gt;色彩格式相互转换。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python代码阅读（第82篇）：datetime对象和ISO时间日期字符串相互转化</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC82%E7%AF%87_datetime%E5%AF%B9%E8%B1%A1%E5%92%8Ciso%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96/</link>
+      <pubDate>Fri, 27 Nov 2020 12:29:04 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC82%E7%AF%87_datetime%E5%AF%B9%E8%B1%A1%E5%92%8Ciso%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了将&lt;code&gt;datetime&lt;/code&gt;对象转化为&lt;code&gt;ISO 8601&lt;/code&gt;字符串，并将其还原回&lt;code&gt;datetime&lt;/code&gt;对象的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第81篇）：根据选择器获取嵌套字典的键值</title>
