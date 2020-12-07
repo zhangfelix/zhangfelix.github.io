@@ -6,10 +6,20 @@
     <description>Recent content in 技术 on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 03 Dec 2020 12:30:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 07 Dec 2020 19:16:09 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第87篇）_字符串填充</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC87%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A1%AB%E5%85%85/</link>
+      <pubDate>Mon, 07 Dec 2020 19:16:09 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC87%E7%AF%87_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A1%AB%E5%85%85/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了使用指定字符在字符串两边填充至指定长度的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第86篇）：公里和英里互相转换</title>
