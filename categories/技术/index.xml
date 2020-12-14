@@ -6,10 +6,20 @@
     <description>Recent content in 技术 on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 11 Dec 2020 18:10:11 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Dec 2020 18:19:31 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第91篇）：连续底数相同幂数之和</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC91%E7%AF%87_%E8%BF%9E%E7%BB%AD%E5%BA%95%E6%95%B0%E7%9B%B8%E5%90%8C%E5%B9%82%E6%95%B0%E4%B9%8B%E5%92%8C/</link>
+      <pubDate>Mon, 14 Dec 2020 18:19:31 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC91%E7%AF%87_%E8%BF%9E%E7%BB%AD%E5%BA%95%E6%95%B0%E7%9B%B8%E5%90%8C%E5%B9%82%E6%95%B0%E4%B9%8B%E5%92%8C/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了对连续底数计算相同的幂数，并求和的功能。即&lt;code&gt;a^b + (a + 1)^b + (a + 2)^b + ... + (a + n) ^ b&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第90篇）：将字符串转换成URL友好形式</title>
