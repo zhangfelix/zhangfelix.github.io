@@ -6,10 +6,20 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Dec 2020 18:20:49 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Dec 2020 18:22:22 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python代码阅读（第94篇）：加权均值</title>
+      <link>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC94%E7%AF%87_%E5%8A%A0%E6%9D%83%E5%9D%87%E5%80%BC/</link>
+      <pubDate>Thu, 17 Dec 2020 18:22:22 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC94%E7%AF%87_%E5%8A%A0%E6%9D%83%E5%9D%87%E5%80%BC/</guid>
+      <description>&lt;p&gt;本篇阅读的代码实现了计算加权均值的功能。&lt;/p&gt;
+&lt;p&gt;本篇阅读的代码片段来自于&lt;a href=&#34;https://github.com/30-seconds/30-seconds-of-python&#34;&gt;30-seconds-of-python&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第93篇）：整数转换成罗马数字表示</title>
