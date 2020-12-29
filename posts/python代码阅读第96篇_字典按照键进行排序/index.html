@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-Python代码阅读（第31篇）：将一个列表分割成指定大小的小列表
+Python代码阅读（第96篇）：字典按照键进行排序
  | 独白</title>
 
     
@@ -15,7 +15,7 @@ Python代码阅读（第31篇）：将一个列表分割成指定大小的小列
 
   
   <meta name="author" content="Felix" />
-  <meta name="description" content="本篇阅读的代码实现了将列表分割成指定大小的小列表的功能。最后一个小列表的长度由实际剩余的项而定。
+  <meta name="description" content="本篇阅读的代码实现了将字典各项根据键按照字典顺序进行排序的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。
 " />
 
@@ -23,22 +23,22 @@ Python代码阅读（第31篇）：将一个列表分割成指定大小的小列
 
 <meta name="generator" content="Hugo 0.72.0" />
 
-<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC31%E7%AF%87_%E5%B0%86%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%E5%88%86%E5%89%B2%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%B0%8F%E5%88%97%E8%A1%A8/" />
+<link rel="canonical" href="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC96%E7%AF%87_%E5%AD%97%E5%85%B8%E6%8C%89%E7%85%A7%E9%94%AE%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F/" />
 
 
-<meta property="og:title" content="Python代码阅读（第31篇）：将一个列表分割成指定大小的小列表" />
-<meta property="og:description" content="本篇阅读的代码实现了将列表分割成指定大小的小列表的功能。最后一个小列表的长度由实际剩余的项而定。
+<meta property="og:title" content="Python代码阅读（第96篇）：字典按照键进行排序" />
+<meta property="og:description" content="本篇阅读的代码实现了将字典各项根据键按照字典顺序进行排序的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC31%E7%AF%87_%E5%B0%86%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%E5%88%86%E5%89%B2%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%B0%8F%E5%88%97%E8%A1%A8/" />
-<meta property="article:published_time" content="2020-08-31T14:58:13+08:00" />
-<meta property="article:modified_time" content="2020-08-31T14:58:13+08:00" />
+<meta property="og:url" content="https://www.zhangfelix.com/posts/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC96%E7%AF%87_%E5%AD%97%E5%85%B8%E6%8C%89%E7%85%A7%E9%94%AE%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F/" />
+<meta property="article:published_time" content="2020-12-29T12:33:04+08:00" />
+<meta property="article:modified_time" content="2020-12-29T12:33:04+08:00" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python代码阅读（第31篇）：将一个列表分割成指定大小的小列表"/>
-<meta name="twitter:description" content="本篇阅读的代码实现了将列表分割成指定大小的小列表的功能。最后一个小列表的长度由实际剩余的项而定。
+<meta name="twitter:title" content="Python代码阅读（第96篇）：字典按照键进行排序"/>
+<meta name="twitter:description" content="本篇阅读的代码实现了将字典各项根据键按照字典顺序进行排序的功能。
 本篇阅读的代码片段来自于30-seconds-of-python。"/>
 
 
@@ -91,25 +91,31 @@ Python代码阅读（第31篇）：将一个列表分割成指定大小的小列
     <section class="ui top attached segment" id="dream-save-post-as-img">
       <header style="margin-top: 0 !important;">
         <h2 class="ui header">
-          Python代码阅读（第31篇）：将一个列表分割成指定大小的小列表
-          <div class="sub header">@ Felix · Monday, Aug 31, 2020 · 1 分钟阅读 · 更新于 Aug 31, 2020</div>
+          Python代码阅读（第96篇）：字典按照键进行排序
+          <div class="sub header">@ Felix · Tuesday, Dec 29, 2020 · 2 分钟阅读 · 更新于 Dec 29, 2020</div>
         </h2>
       </header>
-      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了将列表分割成指定大小的小列表的功能。最后一个小列表的长度由实际剩余的项而定。</p>
+      <article style="margin-top: 2rem;"><p>本篇阅读的代码实现了将字典各项根据键按照字典顺序进行排序的功能。</p>
 <p>本篇阅读的代码片段来自于<a href="https://github.com/30-seconds/30-seconds-of-python">30-seconds-of-python</a>。</p>
-<h2 id="chunk"><code>chunk</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> ceil
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">chunk</span>(lst, size):
-  <span style="color:#66d9ef">return</span> list(
-    map(<span style="color:#66d9ef">lambda</span> x: lst[x <span style="color:#f92672">*</span> size:x <span style="color:#f92672">*</span> size <span style="color:#f92672">+</span> size],
-      list(range(<span style="color:#ae81ff">0</span>, ceil(len(lst) <span style="color:#f92672">/</span> size)))))
+<h2 id="sort_dict_by_key"><code>sort_dict_by_key</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sort_dict_by_key</span>(d, reverse <span style="color:#f92672">=</span> False):
+  <span style="color:#66d9ef">return</span> dict(sorted(d<span style="color:#f92672">.</span>items(), reverse <span style="color:#f92672">=</span> reverse))
 
 <span style="color:#75715e"># EXAMPLES</span>
-chunk([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>], <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># [[1,2],[3,4],[5]]</span>
-</code></pre></div><p><code>chunk</code>函数接收一个列表和一个规模参数，返回分割后的小列表。函数使用<code>list()</code>和<code>range()</code>来创建一个序号列表，指明分割后的列表序号。在序号列表上使用<code>map()</code>并用输入列表的切片来填充它。最后，返回新创建的列表。</p>
-<p><code>math.ceil(x)</code>函数返回<code>x</code>的上限，即大于或者等于<code>x</code>的最小整数。输入列表的长度无法被分割规模整除的时候，最后剩余的项仍然会合并成一个列表，所以，这里需要使用<code>math.ceil(x)</code>获取大于或者等于 <code>(len(lst) / size)</code>的最小整数。</p>
-<p>函数通过<code>list()</code>和<code>range()</code>生成长度为小列表个数的序号列表（从<code>0</code>开始），输入列表<code>lst</code>的切片<code>lst[x * size:x * size + size]</code>就是第<code>x</code>个小列表的内容。</p></article>
+d <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;one&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;three&#39;</span>: <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;five&#39;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;two&#39;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;four&#39;</span>: <span style="color:#ae81ff">4</span>}
+sort_dict_by_key(d) <span style="color:#75715e"># {&#39;five&#39;: 5, &#39;four&#39;: 4, &#39;one&#39;: 1, &#39;three&#39;: 3, &#39;two&#39;: 2}</span>
+sort_dict_by_key(d, True)
+<span style="color:#75715e"># {&#39;two&#39;: 2, &#39;three&#39;: 3, &#39;one&#39;: 1, &#39;four&#39;: 4, &#39;five&#39;: 5}</span>
+</code></pre></div><p>函数<code>sort_dict_by_key</code>接收一个字典<code>d</code>，和一个<code>reverse</code>标识，返回根据字典键排序后的新字典。</p>
+<p>函数先使用<code>dict.item()</code>获取字典<code>(key, value)</code>的可迭代对象。然后使用<code>sorted()</code>函数进行排序，最后将排序结果重新转换成字典。</p>
+<p>针对<code>(key, value)</code>排序的逻辑是先使用<code>key</code>按照字典顺序进行排序，然后使用<code>value</code>按照字典顺序进行排序。</p>
+<p><code>sorted</code>针对元组进行排序是先按照第一个元素排序，再按照第二个元素，一次类推。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">&gt;&gt;&gt;</span> a <span style="color:#f92672">=</span> [(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;c&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span>),(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;c&#39;</span>,<span style="color:#e6db74">&#39;A&#39;</span>),(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#e6db74">&#39;C&#39;</span>),(<span style="color:#ae81ff">0</span>,<span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#e6db74">&#39;a&#39;</span>),(<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#e6db74">&#39;a&#39;</span>)]
+<span style="color:#f92672">&gt;&gt;&gt;</span> sorted(a)
+[(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;A&#39;</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>)]
+</code></pre></div><p>目前我只在官方文档的《排序指南》的“<a href="https://docs.python.org/zh-cn/3/howto/sorting.html#the-old-way-using-decorate-sort-undecorate">使用装饰-排序-去装饰的旧方法</a>”看到一句话提到<code>sorted</code>函数的这种行为方式。</p>
+<p><img src="/post/Python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%EF%BC%88%E7%AC%AC96%E7%AF%87%EF%BC%89_%E5%AD%97%E5%85%B8%E6%8C%89%E7%85%A7%E9%94%AE%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F-1.jpg" alt=""></p>
+<p>因此目前无法确认这种元组排序的行为方式是设计如此，还仅仅是<code>sorted</code>函数的实现产生的副作用，有可能会随时因为实现方式的改变而变化。如果有更确切的来源说明，还请在评论区留言指教。</p></article>
     </section>
 
     <footer class="ui attached segment dream-tags">
@@ -136,8 +142,8 @@ chunk([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span
 
 
           var disqus_config = function () {
-            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC31%E7%AF%87_%E5%B0%86%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%E5%88%86%E5%89%B2%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%B0%8F%E5%88%97%E8%A1%A8\/';  
-            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC31%E7%AF%87_%E5%B0%86%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%E5%88%86%E5%89%B2%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%B0%8F%E5%88%97%E8%A1%A8\/'; 
+            this.page.url = 'https:\/\/www.zhangfelix.com\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC96%E7%AF%87_%E5%AD%97%E5%85%B8%E6%8C%89%E7%85%A7%E9%94%AE%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F\/';  
+            this.page.identifier = '\/posts\/python%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%AC96%E7%AF%87_%E5%AD%97%E5%85%B8%E6%8C%89%E7%85%A7%E9%94%AE%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F\/'; 
           };
 
           (function() { 
