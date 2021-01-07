@@ -6,10 +6,19 @@
     <description>Recent content in Python on 独白</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 30 Dec 2020 12:30:28 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jan 2021 18:36:58 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangfelix.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python zip函数分析和一种可迭代类型解压（Iterable Unpacking）的方式</title>
+      <link>https://www.zhangfelix.com/posts/python_zip%E5%87%BD%E6%95%B0%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%80%E7%A7%8D%E5%8F%AF%E8%BF%AD%E4%BB%A3%E7%B1%BB%E5%9E%8B%E8%A7%A3%E5%8E%8Biterable_unpacking%E7%9A%84%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 07 Jan 2021 18:36:58 +0800</pubDate>
+      
+      <guid>https://www.zhangfelix.com/posts/python_zip%E5%87%BD%E6%95%B0%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%80%E7%A7%8D%E5%8F%AF%E8%BF%AD%E4%BB%A3%E7%B1%BB%E5%9E%8B%E8%A7%A3%E5%8E%8Biterable_unpacking%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
+      <description>&lt;p&gt;针对Python的zip函数进行解释分析，并在此延伸出可迭代类型的解压问题。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python代码阅读（第97篇）：字典按照值进行排序</title>
