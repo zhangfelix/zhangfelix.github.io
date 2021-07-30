@@ -1,0 +1,321 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<title>使用GitHub_Actions部署静态博客（HUGO） | 独白</title>
+<link href=/global/favicon.ico rel="shortcut icon" type=image/x-icon>
+<meta name=author content="Felix">
+<meta name=description content="前言 之前讲解过如何使用Hugo和GitHub搭建博客，采用的是直接使用部署脚本打包上传博客源文件和部署静态博客。最近一段时间，我升级采用gitHub Action来进行博客的部署发布，在这里给大家分享一下。
+">
+<meta name=generator content="Hugo 0.86.0">
+<link rel=canonical href=https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8github_actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2hugo/>
+<meta property="og:title" content="使用GitHub_Actions部署静态博客（HUGO）">
+<meta property="og:description" content="前言
+之前讲解过如何使用Hugo和GitHub搭建博客，采用的是直接使用部署脚本打包上传博客源文件和部署静态博客。最近一段时间，我升级采用gitHub Action来进行博客的部署发布，在这里给大家分享一下。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8github_actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2hugo/"><meta property="og:image" content="https://www.zhangfelix.com"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-07-30T18:20:12+08:00">
+<meta property="article:modified_time" content="2021-07-30T18:30:12+08:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://www.zhangfelix.com">
+<meta name=twitter:title content="使用GitHub_Actions部署静态博客（HUGO）">
+<meta name=twitter:description content="前言
+之前讲解过如何使用Hugo和GitHub搭建博客，采用的是直接使用部署脚本打包上传博客源文件和部署静态博客。最近一段时间，我升级采用gitHub Action来进行博客的部署发布，在这里给大家分享一下。">
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css>
+<link rel=stylesheet href=/css/icomoon.css>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css>
+<link rel=stylesheet href=/css/site.css>
+<style>.ui.header a:not(.item,.ui.button):hover{text-decoration:underline}a:not(.item,.ui.button){color:#2e8b57!important}.inverted a:not(.item,.ui.button){color:#8fbc8f!important}body.default{background-color:#fff;background-image:url(/global/background.jpg)}body.dark{background-color:#000;background-image:url(/global/backgroundDark.jpg)}</style>
+<link rel=stylesheet data-highlight href=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/gruvbox-light.min.css>
+</head>
+<body class=default>
+<nav class="ui secondary menu dream-menu dream-nav">
+<a class="item dream-flip-toggle" title=翻转！>
+<i class="large link bullseye icon"></i>
+</a>
+<a class=item href=https://www.zhangfelix.com title=首页>
+<i class="large link home icon"></i>
+</a>
+<a class=item onclick=themeSwitch(event)>
+<i class="large link icon theme-switch"></i>
+</a>
+<a class=item title=搜索 onclick=toggleSearch(event)>
+<i class="large link search icon"></i>
+</a>
+</nav>
+<div class=flip-container>
+<div class=flipper>
+<section class=front>
+<div class=dream-max-width>
+<div class="ui relaxed centered grid dream-grid dream-grid-single">
+<aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+<div class="ui segment toc">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前言>前言</a></li>
+<li><a href=#什么是github-actions>什么是<code>GitHub Actions</code></a></li>
+<li><a href=#编写github-actions脚本>编写<code>GitHub Actions</code>脚本</a></li>
+<li><a href=#deploy-key配置><code>deploy key</code>配置</a></li>
+<li><a href=#其他操作>其他操作</a></li>
+<li><a href=#测试>测试</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+<div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id=dream-save-post-as-img>
+<section class="ui top attached segment">
+<header>
+<h1 class="ui large header">使用GitHub_Actions部署静态博客（HUGO）<span class="sub header">
+<span class=left>
+@
+Felix
+|
+<span data-format=luxon>2021-07-30T18:20:12+08:00</span>
+| 4 分钟阅读
+| 更新于
+<span data-format=luxon>2021-07-30T18:30:12+08:00</span>
+</span>
+<span class=dream-share>
+<a href=# class=save-as-image title=保存为图片 onclick=savePostAsImg()>
+<i class="save icon"></i>
+</a>
+<a href="https://twitter.com/intent/tweet?text=%e4%bd%bf%e7%94%a8GitHub_Actions%e9%83%a8%e7%bd%b2%e9%9d%99%e6%80%81%e5%8d%9a%e5%ae%a2%ef%bc%88HUGO%ef%bc%89&url=https%3a%2f%2fwww.zhangfelix.com%2fposts%2f%25E4%25BD%25BF%25E7%2594%25A8github_actions%25E9%2583%25A8%25E7%25BD%25B2%25E9%259D%2599%25E6%2580%2581%25E5%258D%259A%25E5%25AE%25A2hugo%2f" title=Twitter>
+<i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.zhangfelix.com%2fposts%2f%25E4%25BD%25BF%25E7%2594%25A8github_actions%25E9%2583%25A8%25E7%25BD%25B2%25E9%259D%2599%25E6%2580%2581%25E5%258D%259A%25E5%25AE%25A2hugo%2f" title=Facebook>
+<i class="facebook icon"></i>
+</a>
+</span>
+</span>
+</h1>
+</header>
+<article class=main>
+<img class=cover src=/post/%e4%bd%bf%e7%94%a8GitHub_Actions%e9%83%a8%e7%bd%b2%e9%9d%99%e6%80%81%e5%8d%9a%e5%ae%a2%ef%bc%88HUGO%ef%bc%89_cover.jpg>
+<h2 id=前言>前言</h2>
+<p>之前讲解过如何<a href=https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/>使用Hugo和GitHub搭建博客</a>，采用的是直接使用部署脚本打包上传博客源文件和部署静态博客。最近一段时间，我升级采用<code>gitHub Action</code>来进行博客的部署发布，在这里给大家分享一下。</p>
+<h2 id=什么是github-actions>什么是<code>GitHub Actions</code></h2>
+<p><code>GitHub Actions</code>是<code>GitHub</code>推出的持续集成服务。在博客部署的场景下，它可以在源文件上传的时刻被触发，然后自动运行一个虚拟机，使用<code>Hugo</code>生成静态博客文件，并自动上传部署。
+在<code>GitHub Actions</code>的体系中，允许开发者开发独立的<code>action</code>以供复用或者其他开发者使用。这些<code>action</code>定义了很多常用的操作，例如抓取代码、配置环境、部署等。所以在自己编写持续集成的脚本的时候，可以直接引用这些定义好的<code>action</code>。而<code>GitHub</code>做了一个<code>action</code>市场，进一步的简化了<code>action</code>的集成。</p>
+<h2 id=编写github-actions脚本>编写<code>GitHub Actions</code>脚本</h2>
+<p>首先在博客源文件目录下新建<code>.github/workflows</code>文件夹，然后再新建<code>GitHub Actions</code>脚本。脚本采用<code>YAML</code>格式，后缀为<code>.yml</code>。脚本内容如下：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># ci.yml</span>
+
+<span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI</span>
+
+<span style=color:#75715e># Controls when the workflow will run</span>
+<span style=color:#f92672>on</span>:
+  <span style=color:#75715e># Triggers the workflow on push or pull request events but only for the master branch</span>
+  <span style=color:#f92672>push</span>:
+    <span style=color:#f92672>branches</span>: [ <span style=color:#ae81ff>master ]</span>
+  <span style=color:#f92672>pull_request</span>:
+    <span style=color:#f92672>branches</span>: [ <span style=color:#ae81ff>master ]</span>
+
+  <span style=color:#75715e># Allows you to run this workflow manually from the Actions tab</span>
+  <span style=color:#f92672>workflow_dispatch</span>:
+
+<span style=color:#75715e># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span>
+<span style=color:#f92672>jobs</span>:
+  <span style=color:#75715e># This workflow contains a single job called &#34;build&#34;</span>
+  <span style=color:#f92672>build</span>:
+    <span style=color:#75715e># The type of runner that the job will run on</span>
+    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+
+    <span style=color:#75715e># Steps represent a sequence of tasks that will be executed as part of the job</span>
+    <span style=color:#f92672>steps</span>:
+      <span style=color:#75715e># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it</span>
+      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v2</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>submodules</span>: <span style=color:#ae81ff>recursive</span>
+
+      <span style=color:#75715e># setup hugo</span>
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>deploy_key</span>: <span style=color:#ae81ff>${{ secrets.ACTIONS_DEPLOY_KEY }}</span>
+          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>&lt;USERNAME&gt;/&lt;USERNAME&gt;.github.io</span>
+          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>master</span>
+          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+          <span style=color:#f92672>cname</span>: <span style=color:#ae81ff>&lt;custom domain&gt;</span>
+          <span style=color:#f92672>user_name</span>: <span style=color:#e6db74>&#39;&lt;user_name&gt;&#39;</span>
+          <span style=color:#f92672>user_email</span>: <span style=color:#e6db74>&#39;&lt;user_email&gt;&#39;</span>
+
+</code></pre></div><p>结构上比较清晰简单。首先是脚本名称。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI</span>
+</code></pre></div><p>然后是脚本的触发时机。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e># Controls when the workflow will run</span>
+<span style=color:#f92672>on</span>:
+  <span style=color:#75715e># Triggers the workflow on push or pull request events but only for the master branch</span>
+  <span style=color:#f92672>push</span>:
+    <span style=color:#f92672>branches</span>: [ <span style=color:#ae81ff>master ]</span>
+  <span style=color:#f92672>pull_request</span>:
+    <span style=color:#f92672>branches</span>: [ <span style=color:#ae81ff>master ]</span>
+</code></pre></div><p>最后是脚本的工作流，这个脚本只有一个流程<code>build</code>。在<code>build</code>这个流程里面首先说明了运行环境<code>runs-on: ubuntu-latest</code>，然后就是4个步骤或者任务。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>jobs</span>:
+  <span style=color:#75715e># This workflow contains a single job called &#34;build&#34;</span>
+  <span style=color:#f92672>build</span>:
+    <span style=color:#75715e># The type of runner that the job will run on</span>
+    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</code></pre></div><p>第一个是将现在的仓库检出。其中<code>uses: actions/checkout@v2</code>说明了使用哪个<code>action</code>。<code>submodules</code>参数取值<code>recursive</code>说明需要递归的检出子模块。这样设置是为了能够将<code>themes</code>一并检出。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>      <span style=color:#75715e># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it</span>
+      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v2</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>submodules</span>: <span style=color:#ae81ff>recursive</span>
+</code></pre></div><p>第二个是设置<code>Hugo</code>环境，直接使用了官方的<code>action</code>并使用最新的版本。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>      <span style=color:#75715e># setup hugo</span>
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+</code></pre></div><p>第三个是生成静态博客文件，直接使用<code>run</code>执行一行<code>shell</code>命令。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+</code></pre></div><p>最后就是将生成的静态博客文件上传至<code>&lt;USERNAME>/&lt;USERNAME>.github.io</code>仓库，完成博客部署。其中使用了<code>deploy key</code>进行权限控制。<code>${{ secrets.ACTIONS_DEPLOY_KEY }}</code>引用了<code>Repository secrets</code>中设置的<code>deploy key</code>的私钥。<code>ACTIONS_DEPLOY_KEY</code>则是对应的<code>secrets</code>的参数名称。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>deploy_key</span>: <span style=color:#ae81ff>${{ secrets.ACTIONS_DEPLOY_KEY }}</span>
+          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>&lt;USERNAME&gt;/&lt;USERNAME&gt;.github.io</span>
+          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>master</span>
+          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+          <span style=color:#f92672>cname</span>: <span style=color:#ae81ff>&lt;custom domain&gt;</span>
+          <span style=color:#f92672>user_name</span>: <span style=color:#e6db74>&#39;&lt;user_name&gt;&#39;</span>
+          <span style=color:#f92672>user_email</span>: <span style=color:#e6db74>&#39;&lt;user_email&gt;&#39;</span>
+</code></pre></div><h2 id=deploy-key配置><code>deploy key</code>配置</h2>
+<p>为了能够将静态博客文件上传至<code>&lt;USERNAME>/&lt;USERNAME>.github.io</code>仓库，需要进行<code>deploy key</code>的配置。首先在本地<a href=https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>生成一对<code>SSH</code>密钥</a>，然后将公钥配置到目标仓库，即在目标仓库的<code>settings</code>中添加<code>deploy key</code>的公钥。
+<img src=/post/%E4%BD%BF%E7%94%A8GitHub_Actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%EF%BC%88HUGO%EF%BC%89_1.png alt>
+<img src=/post/%E4%BD%BF%E7%94%A8GitHub_Actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%EF%BC%88HUGO%EF%BC%89_2.png alt>
+然后在博客源文件的仓库中配置<code>deploy key</code>的私钥。从而让<code>action</code>脚本可以调用。在仓库的<code>settings</code>中新增<code>repository secret</code>，将<code>deploy key</code>的私钥添加进去。
+<img src=/post/%E4%BD%BF%E7%94%A8GitHub_Actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%EF%BC%88HUGO%EF%BC%89_3.jpg alt></p>
+<h2 id=其他操作>其他操作</h2>
+<p>使用<code>GitHub Actions</code>脚本自动部署静态博客的话，就不需要在本地保留<code>public</code>文件删除，也不需要将其上传至博客源文件仓库。因此需要使用下列命令将 <code>public</code>文件夹从<code>git</code>仓库中删除。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git rm -r public
+</code></pre></div><p>然后因为本地测试的时候，经常会再次生成<code>public</code>文件夹，因此，我们需要将其写入<code>.gitignore</code>，在其中添加一行</p>
+<pre><code class=language-gitignore data-lang=gitignore>/public/
+</code></pre><h2 id=测试>测试</h2>
+<p>最后就可以提交所有代码，并测试脚本的运行情况了。像通常一样进行<code>commit</code>和<code>push</code>之后，我们就可以在博客源文件所属的仓库中看到自动部署的日志了。
+<img src=/post/%E4%BD%BF%E7%94%A8GitHub_Actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%EF%BC%88HUGO%EF%BC%89_4.jpg alt></p>
+</article>
+</section>
+<article class="ui segment post-disqus-area" data-html2canvas-ignore>
+<div id=disqus_thread></div>
+<script>var disqus_config=function(){this.page.url="https://www.zhangfelix.com/posts/%E4%BD%BF%E7%94%A8github_actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2hugo/",this.page.identifier="/posts/%E4%BD%BF%E7%94%A8github_actions%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2hugo/"};(function(){var a=document,b=a.createElement('script');b.src='https://zhangfelix-blog.disqus.com/embed.js',b.setAttribute('data-timestamp',+new Date),(a.head||a.body).appendChild(b)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+</article>
+<article class="ui segment utterances-comments" data-html2canvas-ignore>
+<script src=https://utteranc.es/client.js repo=zhangfelix/zhangfelix.github.io issue-term=og:title theme=github-light crossorigin=anonymous async></script>
+</article>
+</div>
+</div>
+<footer class="ui basic center aligned segment" style=background-color:transparent>
+<p>© 2020 - 2021 独白</p>
+<p>Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a> with theme <a href=https://github.com/g1eny0ung/hugo-theme-dream target=_blank>Dream</a>.</p>
+</footer>
+</div>
+</section>
+<section class=back>
+<div class=dream-max-width>
+<header class="ui basic very padded segment dream-header">
+<div class="ui small circular image">
+<img src=/global/avatar.jpg alt=avatar>
+</div>
+<div class=content>
+<h1 class="ui medium header">zhangfelix's blog<span class="sub header">Monologue</span>
+</h1>
+<article class="ui horizontal list">
+<a class=item href=/posts>
+<i class="archive icon" title=归档></i>
+</a>
+<a class=item href=/categories>
+<i class="th list icon" title=所有分类></i>
+</a>
+<a class=item href=/tags>
+<i class="tags icon" title=所有标签></i>
+</a>
+</article>
+<div class=dream-tags>
+<a class="ui label" href=/tags/github/ title=GitHub>
+GitHub
+</a>
+<a class="ui label" href=/tags/hugo/ title=Hugo>
+Hugo
+</a>
+<a class="ui label" href=/tags/python/ title=Python>
+Python
+</a>
+</div>
+</div>
+</header>
+<div class="ui relaxed grid dream-grid dream-back">
+<div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+<article class="ui segment markdown-body">
+<div class="ui medium header">Desc</div>
+<p>Hi, my name is Felix.</p>
+<p>This is my blog.</p>
+</article>
+</div>
+<div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+<article class="ui segment">
+<div class="ui medium header">社交链接</div>
+<nav class="ui secondary menu dream-menu dream-socials">
+<a class=item href=/index.xml>
+<i class="large rss square icon" title=RSS></i>
+</a>
+<a class=item href=mailto:zhn.i@hotmail.com>
+<i class="large mail icon" title=Email></i>
+</a>
+<a class=item href=https://twitter.com/zhangnfelix target=_blank>
+<i class="large twitter icon" title=Twitter></i>
+</a>
+<a class=item href=https://github.com/zhangfelix target=_blank>
+<i class="large github icon" title=GitHub></i>
+</a>
+</nav>
+</article>
+</div>
+<div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.6.0></script>
+<script src=https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js></script>
+<div class="ui segment" id=dream-search>
+<div class="ui search">
+<div class="ui transparent input">
+<input class=prompt type=text placeholder=搜索>
+</div>
+<div class=results></div>
+</div>
+</div>
+<script>$(document).ready(function(){$.getJSON('https://www.zhangfelix.com/index.json',function(a){$('.ui.search').search({source:a,searchFields:['title'],showNoResults:!1})})})</script>
+<script src=/js/search.js></script>
+<script>window.background="#fff",window.defaultDark=null,window.backgroundDark="black",window.backgroundImageDark="/global/backgroundDark.jpg",window.darkNav=null,window.maxTags=null,window.hasTwitterEmbed=null,window.fixedNav=!0,window.hasTwitterEmbed&&(window.twttr=function(c,d,e){var b,f=c.getElementsByTagName(d)[0],a=window.twttr||{};return c.getElementById(e)?a:(b=c.createElement(d),b.id=e,b.src='https://platform.twitter.com/widgets.js',f.parentNode.insertBefore(b,f),a._e=[],a.ready=function(b){a._e.push(b)},a)}(document,'script','twitter-wjs'))</script>
+<script src=https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js></script>
+<script src=/js/header.js></script>
+<script src=/js/main.js></script>
+<script src=/js/theme.js></script>
+<script src=https://cdn.jsdelivr.net/npm/luxon@1.26.0></script>
+<script>format();function format(){$('span[data-format="luxon"]').each(function(){var a=$(this).text();$(this).text(luxon.DateTime.fromISO(a,{locale:"zh"}).toFormat("yyyy年MM月dd日"))})}</script>
+<script src=/js/scrollToTop.js></script>
+<script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js></script>
+<script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js></script>
+<script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/python.min.js></script>
+<script>hljs.highlightAll(),setHighlightTheme();function setHighlightTheme(){var a=localStore.getItem('hugo-theme-dream-is-dark'),b,c,d;a=a?a:window.defaultDark?'y':a,b="gruvbox-light",c="gruvbox-dark",d=a==='y'?c:b,$('link[data-highlight]').attr('href','https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/'+d+'.min.css'),$('pre').css('background',a==='y'?'#333':'')}</script>
+<script src=https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1></script>
+<script src=/js/post.js defer></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-169268545-1','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</body>
+</html>
